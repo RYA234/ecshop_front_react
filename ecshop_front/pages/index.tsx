@@ -1,25 +1,33 @@
 import { useEffect, useState } from 'react';
+import Center from '../component/center';
 import Footer from '../component/footer'
 import Header from '../component/header'
+import Left from '../component/left';
+import Sidebar from '../component/left';
 
 
 
 export default function Home() {
-	ApiFetch();
+	// ApiFetch();
 	return (
 		<>
 			<Header left={0} top={0} color='yellow' bgColor='green' width={1440} height={95} />
+			{/* <Sidebar  left={0} top={95} color='black' bgColor='springgreen' width={212} height={862}/> */}
 
-			<Header left={0} top={95} color='yellow' bgColor='yellow' width={212} height={870} />
-			
+			<main>
+			<Left left={0} top={100} color='yellow' bgColor='gray' width={200} height={1000} />
+			<Center left={212} top={95} color='black' bgColor='rgba(252, 154, 154, 0.39)' width={1150} height={862} />
+			</main>
+
 			{/* Number型は{}で囲みString型は''で囲む下参照 */}
-			<Footer left={0} top={957} color='yellow' bgColor='blue' width={1440} height={59} />
+			{/* <Footer left={0} top={957} color='yellow' bgColor='gray' width={1440} height={59} /> */}
 		
 		</>
 	)
 };
 
 
+// restapi 検証用の関数。
 export const ApiFetch = () => {
 	const [stones, setStone] = useState([]);
 
