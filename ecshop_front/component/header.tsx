@@ -1,19 +1,22 @@
 export default function Header({ left, top, color, bgColor, height, width }: any) {
 	return (
-		< >
-			<header>Header</header>
+		<div>
+		<header>
+				ヘッダー
+		</header>
 			<style jsx>{`
-				header{			
-					position:absolute;
+				div{			
+					position:fixed;
 					left:${left}px;
 					top:${top}px;
-					width:${width}px;
-					height:${height}px;
+					width: 100%;
+				    height:${height}px;
 					color:${color};
 					background:${bgColor};	
+					z-index:2;
 				}
 			`}</style>
-		</>
+		</div>
 
 	)
 }
