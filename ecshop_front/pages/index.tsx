@@ -8,13 +8,13 @@ export default function Home() {
 	ApiFetch();
 	return (
 		<>
-			<Header left={0} top={0} color='yellow' bgColor='green' width={1000} height={50} />
+			<Header left={0} top={0} color='yellow' bgColor='green' width={1440} height={95} />
+
+			<Header left={0} top={95} color='yellow' bgColor='yellow' width={212} height={870} />
 			
 			{/* Number型は{}で囲みString型は''で囲む下参照 */}
-			<Footer left={0} top={300} color='yellow' bgColor='blue' width={1000} height={50} />
+			<Footer left={0} top={957} color='yellow' bgColor='blue' width={1440} height={59} />
 		
-			
-
 		</>
 	)
 };
