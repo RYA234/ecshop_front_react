@@ -9,15 +9,16 @@ export default function Right({ left, top, color, bgColor, height, width }: any)
 			 {/* main description */}
 			<style jsx>{`
 				div{
-					position:fixed;
-					left:${left}px;
-					top:${top}px;
-					width:${width}px;
-					//height:${height}px;
-					height:100%;
-					color:${color};
-					background:${bgColor};	
-				}
+					flex:2;
+				// 	position:fixed;
+				// 	left:${left}px;
+				// 	top:${top}px;
+				// 	width:${width}px;
+				// 	//height:${height}px;
+				// 	height:100%;
+				// 	color:${color};
+				// 	background:${bgColor};	
+				 }
 			`}</style>
 		</div>
 	)

@@ -1,51 +1,30 @@
 import { useEffect, useState } from 'react';
-import Center from '../component/center';
-import Footer from '../component/footer'
-import Header from '../component/header'
-import Left from '../component/left';
-import Sidebar from '../component/left';
-import Right from '../component/right';
-
 export default function Home() {
 	// ApiFetch();
 	return (
 		<div>
 			<header>ヘッダー </header>
 			<main>
-				<div>
+				<div className="leftCenterRightInMain">
 					<div className="left">
 						左側
-
 					</div>
-
-
 					<div className='center'>
-						{/* <Left left={0} top={100} color='yellow' bgColor='gray' width={200} height={1000} /> */}
-						{/* <Center left={212} top={95} color='black' bgColor='rgba(252, 154, 154, 0.39)' width={1150} height={862} /> */}
-						{/* <Right left={1370} top={100} color='black' bgColor='yellow' width={300} height={1000} /> */}
 						センター
-						<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-						<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-						<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-						<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-						<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-
-
+						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 						終わり
 					</div>
 
 					<div className="right">
 						右側
-
 					</div>
 				</div>
-
 			</main>
 			<footer>フッター</footer>
-
-			{/* Number型は{}で囲みString型は''で囲む下参照 */}
-			{/* <Footer left={0} top={957} color='yellow' bgColor='gray' width={1440} height={59} /> */}
-
 			<style jsx>{`
 				header{
 					position:sticky;
@@ -89,7 +68,6 @@ export default function Home() {
 		</div>
 	)
 };
-
 // restapi 検証用の関数。
 export const ApiFetch = () => {
 	const [stones, setStone] = useState([]);

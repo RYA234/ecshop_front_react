@@ -20,16 +20,17 @@ export default function Center({ left, top, color, bgColor, height, width }: any
 			end
 			<style jsx>{`
 				div{
-					position:absolute;
-					left:${left}px;
-					top:${top}px;
-					width:${width}px;
-					//height:100%;
-					//height:${height}px;
-					color:${color};
-					background:${bgColor};
-					overflow: hidden;
-					z-index:1;
+					flex:1;
+					// position:absolute;
+					// left:${left}px;
+					// top:${top}px;
+					// width:${width}px;
+					// //height:100%;
+					// //height:${height}px;
+					// color:${color};
+					// background:${bgColor};
+					// overflow: hidden;
+					// z-index:1;
 					
 				}
 			`}</style>
