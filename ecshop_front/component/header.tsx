@@ -13,8 +13,7 @@ export default function Header({ left, top, color, bgColor, height, width }: any
 				    //  height:${height}px;
 					// color:${color};
 					// background:${bgColor};	
-					z-index:2;
-					
+					z-index:2;	
 				}
 			`}</style>
 		</div>

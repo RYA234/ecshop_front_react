@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 export default function Home() {
 	// ApiFetch();
 	return (
-		<div>
+		<div className = 'headCenterFooter'>
 			<header>ヘッダー </header>
 			<main>
-				<div className="leftCenterRightInMain">
+				<div className='leftCenterRightInMain'>
 					<div className="left">
 						左側
 					</div>
@@ -26,11 +26,16 @@ export default function Home() {
 			</main>
 			<footer>フッター</footer>
 			<style jsx>{`
+				.headCenterFooter{
+					display: flex;
+					flex-direction: column;				
+				}
+
 				header{
 					position:sticky;
 					top: 0;
 					left: 0;
-					//width: 100%;
+					width: 100%;
 					height: 120px;
 					color:black;
 					background:yellow;
@@ -38,9 +43,8 @@ export default function Home() {
 				footer{
 					color:yellow;
 					background:purple;
-					height:80px;
+					height:100px;
 					bottom:0;
-					position:absolute;
 					width:100%;
 				}
 				main{
