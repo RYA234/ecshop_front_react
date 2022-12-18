@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Left from '../component/left';
 export default function Home() {
 	// ApiFetch();
 	return (
@@ -6,9 +7,8 @@ export default function Home() {
 			<header>ヘッダー </header>
 			<main>
 				<div className='leftCenterRightInMain'>
-					<div className="left">
-						左側
-					</div>
+					<Left className="left"/>
+					
 					<div className='center'>
 						センター
 						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -24,7 +24,8 @@ export default function Home() {
 					</div>
 				</div>
 			</main>
-			<footer>フッター</footer>
+			<footer>フッター
+			</footer>
 			<style jsx>{`
 				.headCenterFooter{
 					display: flex;
@@ -56,7 +57,8 @@ export default function Home() {
 					flex-direction: row;
 				}
 				.left{
-					flex:1;
+					flex:2;
+					// width:150px;
 					color:rainbow;
 					background:pink;
 				}
@@ -75,7 +77,6 @@ export default function Home() {
 // restapi 検証用の関数。
 export const ApiFetch = () => {
 	const [stones, setStone] = useState([]);
-
 	useEffect(() => {
 		// APIをfetchする(呼び出す)
 		fetch("http://localhost:5000/api/products", { method: "GET" })
