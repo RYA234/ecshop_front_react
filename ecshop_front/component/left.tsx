@@ -49,7 +49,7 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 				`}</style>
 		</ul>
 	);
-
+	
 	const list111 = categories.map((category) => {
 		<div>{category.name}</div>
 		if (category.parent == null) {
@@ -117,34 +117,37 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 						<li key={category.id}>{category.name} {category.children}</li>
 					)}
 			</ul> */}
-			<>
+			<ul>
 				{
 					categories.map(category => {
 						if (category.parent == null)
 							return (
 								// eslint-disable-next-line react/jsx-key
-								<div>
-									{category.name}
-									<ul>
+								<li>
+									<div className='ab'>{category.name}</div>
+									<div className='b'>
 										{
 											 category.children.map(small => {
 												const  title  = categories.at(parseInt(small)).name;
 												console.log(title);
 												return(
 													// <div>{child}</div>
-													<li className='a'>{title}</li>
+													// eslint-disable-next-line react/jsx-key
+													<a href="uhii">{title}<br/></a>
+													
 												)
 											 })
 											// category.children.map(child =>{
 											// 	<li key = {child}>11</li>
 											// })
 										}
-									</ul>
-								</div>
+									</div>
+									
+								</li>
 							);
 					})
 				}
-			</>
+			</ul>
 
 			<>
 
@@ -160,11 +163,20 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 					// color:${color};
 					// background:${bgColor};	
 				}
-				.a{
+				div.ab{
 					left:100px;
-					position:relative;
+					//position:relative;
 					list-style: none;
 					visibility: visible;
+					margin: 8px 0 0 12px;
+					
+				}
+				div.b{
+					position:absolute;
+					margin: -20px 0 0 90px;
+					padding: 0 0 0 12px;
+					z-index:4;
+					visibility: hidden;
 				}
 			`}</style>
 		</div>
