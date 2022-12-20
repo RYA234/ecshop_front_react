@@ -17,7 +17,7 @@ function DisplayMenu() {
 
 export default function Left({ left, top, color, bgColor, height, width }: any) {
 	const [categories, setCategories] = useState([])
-
+	const [visible, setVisible] = useState("hidden");
 	useEffect(() => {
 		fetch("http://localhost:5000/api/category/all", { method: "GET" })
 			// レスポンスのデータ形式をjsonに設定
@@ -49,74 +49,21 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 				`}</style>
 		</ul>
 	);
-	
-	const list111 = categories.map((category) => {
-		<div>{category.name}</div>
-		if (category.parent == null) {
-			 	
-			<div>ddsasdafsafdadsadsas</div>
-		}
-	});		
+	function onMouse(e){
+		setVisible("visible");
 
-
-	const list1112 =categories.map((category)=>{
-		return(<><li key={category.id}>{category.name}</li><ul>
-			{/* <SubList sub = {category} /> */}
-			{/* {subList(category)} */}
-		</ul></>
-		)
-	})
-
-	function MainM(){
-		categories.map((category)=>{
-			if(category.parent == null){
-			}
-				return(
-					<>
-						aaaa
-						{/* <li>{category.name}</li> */}
-						{/* <ul> */}
-						{/* <SubList  sub={category}/> */}
-						{/* <Subaaa /> */}
-						
-						{/* </ul> */}
-					</>
-				)	
-				})
-	}
-	function Subaaa(){
-		return(
-			<div>aaa</div>
-		)
+		console.log("aaaaa")
 	}
 
-	function SubList(sub: any){
-		sub.children.map((child: any)=>{	
-			return(
-				// eslint-disable-next-line react/jsx-key
-				<li>{child.name}</li>
-			
-			)}		
-	)}
-
+	function onMouseOut(e){
+		setVisible("hidden");
+		console.log("bbbb");
+	}
 
 	return (
 		<div>
-			
-			<ul>	
-				<MainM />
-				
-			</ul>
-			{/* <>{list111}</> */}
-			
-			{/* main description */}
 			カテゴリー覧a
-			{/* <ul>
-				{
-					categories.map(category =>
-						<li key={category.id}>{category.name} {category.children}</li>
-					)}
-			</ul> */}
+
 			<ul>
 				{
 					categories.map(category => {
@@ -124,8 +71,8 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 							return (
 								// eslint-disable-next-line react/jsx-key
 								<li>
-									<div className='ab'>{category.name}</div>
-									<div className='b'>
+									<div className='ab' onMouseEnter={onMouse} onMouseOut={onMouseOut} >{category.name}</div>
+									<div id={category.name} key='1' className='b'>
 										{
 											 category.children.map(small => {
 												const  title  = categories.at(parseInt(small)).name;
@@ -133,8 +80,7 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 												return(
 													// <div>{child}</div>
 													// eslint-disable-next-line react/jsx-key
-													<a href="uhii">{title}<br/></a>
-													
+													<a href="uhii">{title}<br/></a>			
 												)
 											 })
 											// category.children.map(child =>{
@@ -149,9 +95,6 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 				}
 			</ul>
 
-			<>
-
-			</>
 			<style jsx>{`
 				div{
 					// position:fixed;
@@ -176,7 +119,7 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 					margin: -20px 0 0 90px;
 					padding: 0 0 0 12px;
 					z-index:4;
-					visibility: hidden;
+					visibility: ${visible};
 				}
 			`}</style>
 		</div>
