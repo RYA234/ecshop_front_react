@@ -1,36 +1,38 @@
-[
-    {
-        "id": 0,
-        "name": "生鮮食品",
-        "alias": "Food",
-        "parent": null,
-        "children": [
-            1,
-            2,
-            3,
-            5,
-            11
-        ]
-    },
-    {
-        "id": 1,
-        "name": "食肉",
-        "alias": "Meat",
-        "parent": 0,
-        "children": []
-    },
-    {
-        "id": 2,
-        "name": "魚",
-        "alias": "Fish",
-        "parent": 0,
-        "children": []
-    },
-    {
-        "id": 3,
-        "name": "野菜",
-        "alias": "Vegetable",
-        "parent": 0,
-        "children": []
-    }
-]
+{	
+	"categories":[
+		{
+			"id": 0,
+			"name": "生鮮食品",
+			"alias": "Food",
+			"parent": null,
+			"children": [
+				1,
+				2,
+				3,
+				5,
+				11
+			]
+		},
+		{
+			"id": 1,
+			"name": "食肉",
+			"alias": "Meat",
+			"parent": 0,
+			"children": []
+		},
+		{
+			"id": 2,
+			"name": "魚",
+			"alias": "Fish",
+			"parent": 0,
+			"children": []
+		},
+		{
+			"id": 3,
+			"name": "野菜",
+			"alias": "Vegetable",
+			"parent": 0,
+			"children": []
+		}
+	]
+}
