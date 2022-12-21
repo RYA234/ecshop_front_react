@@ -14,8 +14,8 @@ function DisplayMenu() {
 
 }
 
-
-export default function Left({ left, top, color, bgColor, height, width }: any) {
+// apiでデータ読み込み
+export default function Left(this: any, { left, top, color, bgColor, height, width }: any) {
 	const [categories, setCategories] = useState([])
 	const [visible, setVisible] = useState("hidden");
 	useEffect(() => {
@@ -28,42 +28,17 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 			})
 	}, [])
 
-	const mains = [1,2,3,4]
-	const subs =[6,7]
-	const mainArray: String[] = [];
-	const listSub = subs.map((sub)=>
-		 // eslint-disable-next-line react/jsx-key
-		 <div>{sub}</div>
-		)
-	const listItems = mains.map((main)=>
-		// eslint-disable-next-line react/jsx-key
-		<ul>{main}
-			<li className='a'>{listSub}</li>
-			<style jsx>{`
-					.a{
-						left:160px;
-						position:absolute;
-						list-style: none;
-						visibility: visible;
-					}
-				`}</style>
-		</ul>
-	);
 	function onMouse(e){
 		setVisible("visible");
-
-		console.log("aaaaa")
 	}
 
 	function onMouseOut(e){
 		setVisible("hidden");
-		console.log("bbbb");
 	}
 
 	return (
 		<div>
-			カテゴリー覧a
-
+			カテゴリー覧
 			<ul>
 				{
 					categories.map(category => {
@@ -71,8 +46,8 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 							return (
 								// eslint-disable-next-line react/jsx-key
 								<li>
-									<div className='ab' onMouseEnter={onMouse} onMouseOut={onMouseOut} >{category.name}</div>
-									<div id={category.name} key='1' className='b'>
+									<div className='mainMenu' onMouseEnter={onMouse} onMouseOut={onMouseOut} >{category.name}</div>
+									<div id={category.name}  className='subMenu'>
 										{
 											 category.children.map(small => {
 												const  title  = categories.at(parseInt(small)).name;
@@ -83,9 +58,6 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 													<a href="uhii">{title}<br/></a>			
 												)
 											 })
-											// category.children.map(child =>{
-											// 	<li key = {child}>11</li>
-											// })
 										}
 									</div>
 									
@@ -95,6 +67,9 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 				}
 			</ul>
 
+			<>
+
+			</>
 			<style jsx>{`
 				div{
 					// position:fixed;
@@ -106,7 +81,7 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 					// color:${color};
 					// background:${bgColor};	
 				}
-				div.ab{
+				.mainMenu{
 					left:100px;
 					//position:relative;
 					list-style: none;
@@ -114,13 +89,14 @@ export default function Left({ left, top, color, bgColor, height, width }: any) 
 					margin: 8px 0 0 12px;
 					
 				}
-				div.b{
+				.subMenu{
 					position:absolute;
 					margin: -20px 0 0 90px;
 					padding: 0 0 0 12px;
 					z-index:4;
 					visibility: ${visible};
 				}
+			
 			`}</style>
 		</div>
 	)
