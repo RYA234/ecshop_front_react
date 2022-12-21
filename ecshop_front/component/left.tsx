@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 // todo リファクタリング必要
 
 
-// 左サブメニューのコンポーネント
+// 　　左サブメニューのコンポーネント
 export default function Left(this: any, { left, top, color, bgColor, height, width }: any) {
 	const [categories, setCategories] = useState([])
 	const [visible, setVisible] = useState("hidden");

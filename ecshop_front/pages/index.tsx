@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import Left from '../component/left';
+
+// 全体の画面の位置決めているコンポーネント
+// ここで左サブメニューとセンターと右サブメニューを配置する
 export default function Home() {
 	// ApiFetch();
 	return (
