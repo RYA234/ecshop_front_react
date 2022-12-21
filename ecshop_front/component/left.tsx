@@ -3,23 +3,14 @@ import { useEffect, useState } from "react";
 
 // todo リファクタリング必要
 
-function DisplayMenu() {
 
-
-	return (
-		<div>
-
-		</div>
-	);
-
-}
-
-// apiでデータ読み込み
+// 左サブメニューのコンポーネント
 export default function Left(this: any, { left, top, color, bgColor, height, width }: any) {
 	const [categories, setCategories] = useState([])
 	const [visible, setVisible] = useState("hidden");
 	useEffect(() => {
-		fetch("http://localhost:5000/api/category/all", { method: "GET" })
+		// fetch("http://localhost:5000/api/category/all", { method: "GET" })
+		fetch("http://my-json-server.typicode.com/RYA234/ecshop_front_react/categories", { method: "GET" })
 			// レスポンスのデータ形式をjsonに設定
 			.then((res) => res.json())
 			.then(data => {
