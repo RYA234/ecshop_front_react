@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Home() {
 	// ApiFetch();
 	return (
+
 		<div className = 'headCenterFooter'>
 			<header>ヘッダー </header>
 			<main>
