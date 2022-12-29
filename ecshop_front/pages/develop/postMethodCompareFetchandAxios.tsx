@@ -1,5 +1,5 @@
 import axios from "axios";
-
+//
 export default function PostMethodCompareFetchandAxios() {
 	
 	const enteredEmail : string = 'aaaba@gmail.com';
