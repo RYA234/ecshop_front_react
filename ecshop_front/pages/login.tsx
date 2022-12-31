@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import { resourceLimits } from 'worker_threads';
 
 export default function Login() {
-	let aa;
 	const [email, setEmail] = useState("aaaba@gmail.com");
 	const [password, setPassWord] = useState("test");
 	const [jwtToken,setJWTToken] = useState("");
