@@ -3,7 +3,6 @@ import * as categoryService from "../../service/categoryService";
 import { useEffect, useRef, useState } from "react";
 
 export default function AxiosApi() {
-	const refCategories = useRef<Category[]>([])
 	const [categories, setCategories] = useState<Category[]>([])
 
 	// 初回実行時のみApiを読み込む
@@ -19,7 +18,7 @@ export default function AxiosApi() {
 				console.log(response.data)
 			});
 	}
-
+	
 	return (
 		<div>
 			<h1>axiosを使ったデータ取得</h1>
