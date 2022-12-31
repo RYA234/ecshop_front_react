@@ -5,10 +5,9 @@
 * @link {signin.ts}
 */
 export  type Customer = {
-	/** MySQL側のIDです。フロント側では触りません*/
-	id:number
+	append(arg0: string, inputEmail: string): unknown
 	/** Eメールアドレスです。ログインするときに必要な情報です　入力した情報とMySql側で照合します。*/
-	email:string
+	email:string 
 	/** パスワードです。 ログインするときに必要な情報です。SpringSecurity側でエンコードされます。*/
-	password:string
+	password:string 
 }
