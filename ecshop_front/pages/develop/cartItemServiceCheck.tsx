@@ -3,11 +3,15 @@ import { CartItem } from "../../types/cartItem";
 import { Customer } from "../../types/customer";
 import * as customerService from "../../service/customerService";
 import * as cartItemService from "../../service/cartItemService";
-import { AxiosResponse } from "axios";
-import { getCartItems, updateQuantity } from "../../service/cartItemService";
-import { CarouselItem } from "react-bootstrap";
-import { reverse } from "dns/promises";
 
+/**
+ * 
+ * @remarks SpringBootのRestAPIを nextjs側が動かせるかの検証用ページ
+ * 
+ * @authoer RYA234
+ * 
+ * @returns 
+ */
 export default function CartItemServiceCheck(this: any) {
   const [currentCartItems, setCurrentCartItems] = useState<CartItem[]>([]);
   const [jwtAccessToken, setJwtAccessToken] = useState<string | null>();
@@ -46,20 +50,22 @@ export default function CartItemServiceCheck(this: any) {
         console.log("accesssToken is not set");
       });
   };
+
+  // カートアイテムの情報を取得する
   const getCartItems = () => {
     cartItemService
       .getCartItems(jwtAccessToken as string)
       .then((response) => {
         // 再レンダリングを防ぐために、レスポンスのデータが変わっている場合のみsetCurrentCartItemsを実行する。
         // if ((response.data as CartItem[]).toString() != currentCartItems.toString()) // ToString()だとエラーになるのでJSON.stringifyに修正
-		if(JSON.stringify(response.data as CartItem[]) != JSON.stringify(currentCartItems)) 
-		{
+        if (
+          JSON.stringify(response.data as CartItem[]) !=
+          JSON.stringify(currentCartItems)
+        ) {
           setCurrentCartItems(response.data);
-		  console.log("cartItems are set");
+          console.log("cartItems are set");
           console.log(response.data);
         }
-
-       
       })
       .catch((error) => {
         console.log("cartItems are not set");
@@ -69,15 +75,14 @@ export default function CartItemServiceCheck(this: any) {
   let inputProductId: number = 0;
   let inputQuantity: number = 0;
 
+  // カートアイテムを追加する
   const addCartItem = async () => {
     const inputCartItem: CartItem = {
-      // productId: inputProductId as number, quantity: inputQuantity as number,
       productId: inputProductId as number,
       quantity: inputQuantity as number,
       id: 0,
       customerId: 0,
     };
-
     await cartItemService
       .addProductCart(inputCartItem, jwtAccessToken as string)
       .then((response) => {
@@ -90,6 +95,7 @@ export default function CartItemServiceCheck(this: any) {
   };
 
   // データベースに追加後、データベースから再取得する
+  // ボタンに割り当てる
   const addCartItemHandler = async () => {
     console.log("jwt" + jwtAccessToken);
     await addCartItem();
@@ -97,6 +103,8 @@ export default function CartItemServiceCheck(this: any) {
     await getCartItems();
   };
 
+  // カートアイテムの数量を更新後、データベースから再取得して画面更新する。
+  // ボタンに割り当てる
   const updateQuantitAndGetCartItemsyHandler = async () => {
     await updateQuantity();
     console.log("between updateQuantity and getCartItems");
@@ -105,7 +113,7 @@ export default function CartItemServiceCheck(this: any) {
 
   let updateInputquantiy: number = 0;
   let updateInputProductId: number = 0;
-
+  // カートアイテムの数量を更新する
   const updateQuantity = async () => {
     const updateCarItem: CartItem = {
       productId: updateInputProductId as number,
@@ -124,36 +132,53 @@ export default function CartItemServiceCheck(this: any) {
   };
   let removeInputProductId: number = 0;
 
-   
-
+  // removeInputProducIdの値の商品を削除後　再度データベースから取得して画面更新する。
+  // ボタンに割り当てる
   const removeCartItemAndGetItemsHandler = async () => {
-	await removeCartItem();
-
-	await getCartItems();
+    await removeCartItem();
+    await getCartItems();
   };
 
+  // removeInputProducIdの値の商品を削除する
   const removeCartItem = async () => {
-	const removeCartItem:CartItem = {
-		productId: removeInputProductId as number,
-		id: 0,
-		customerId: 0,
-		quantity: 0
-	}
+    const removeCartItem: CartItem = {
+      productId: removeInputProductId as number,
+      id: 0,
+      customerId: 0,
+      quantity: 0,
+    };
 
-	await cartItemService
-	.removeProduct(removeCartItem, jwtAccessToken as string)
-	.then((response) => {
-		console.log(response.data)
-	})
-	.catch((error) => {
-		console.log(error)
-	})
-  }
+    await cartItemService
+      .removeProduct(removeCartItem, jwtAccessToken as string)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  // 顧客のカートアイテム全削除後、再度データベースから取得して画面更新する。
+  // ボタンに割り当てる
+  const deleteAndGetItemsHandler = async () => {
+    await deleteCartItem();
+    await getCartItems();
+  };
 
-  const deleteCartItemHandler = (event: React.FormEvent<HTMLFormElement>) => {};
+  // 顧客のカートアイテム全削除する
+  const deleteCartItem = async () => {
+    await cartItemService
+      .deleteByCustomer(jwtAccessToken as string)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
+      <h1>カートアイテムの取得、追加、更新、削除 検証ページ</h1>
       <div>※aaabaa@gmail.comでログインしているものとする。</div>
       <h1>カートアイテムの全取得</h1>
       <div>リアルタイムで表示されます。</div>
@@ -168,6 +193,7 @@ export default function CartItemServiceCheck(this: any) {
           </div>
         );
       })}
+      <br />
       <h1>カートアイテム追加</h1>
       <label>商品ID</label>
       <input
@@ -188,8 +214,7 @@ export default function CartItemServiceCheck(this: any) {
         }
       />
       <button onClick={addCartItemHandler}>カートアイテム追加</button>
-     
-	  <h1>カートアイテムの数量を変更</h1>
+      <h1>カートアイテムの数量を変更</h1>
       <label>数量変更する商品ID</label>
       <input
         type="text"
@@ -198,8 +223,7 @@ export default function CartItemServiceCheck(this: any) {
           (updateInputProductId = event.target.value as unknown as number)
         }
       />
-	  <br/>
-
+      <br />
       <label>数量</label>
       <input
         type="text"
@@ -208,19 +232,23 @@ export default function CartItemServiceCheck(this: any) {
           (updateInputquantiy = event.target.value as unknown as number)
         }
       />
-	  <br/>
-	<button onClick={updateQuantitAndGetCartItemsyHandler}>数量変更</button>
+      <br />
+      <button onClick={updateQuantitAndGetCartItemsyHandler}>数量変更</button>
       <h1>カートアイテムを1つ削除</h1>
-					<label> 商品ID</label>
-					<input 
-						type ="text" 
-						placeholder="削除したい商品ID"
-						onChange={(event) => (removeInputProductId = event.target.value as unknown as number)}	
-					/>
-					<button onClick={removeCartItemAndGetItemsHandler}>remove</button>
-			
+      <label> 商品ID</label>
+      <input
+        type="text"
+        placeholder="削除したい商品ID"
+        onChange={(event) =>
+          (removeInputProductId = event.target.value as unknown as number)
+        }
+      />
+      <br />
+      <button onClick={removeCartItemAndGetItemsHandler}>remove</button>
       <h1>カートアイテムを全削除</h1>
-      <form onSubmit={deleteCartItemHandler}></form>
+      <button onClick={deleteAndGetItemsHandler}>
+        delete カートアイテム全削除
+      </button>
     </>
   );
 }
