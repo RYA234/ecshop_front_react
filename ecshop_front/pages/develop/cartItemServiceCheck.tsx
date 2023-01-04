@@ -4,7 +4,7 @@ import { Customer } from "../../types/customer";
 import * as customerService from "../../service/customerService";
 import * as cartItemService from "../../service/cartItemService";
 import { AxiosResponse } from "axios";
-import { getCartItems } from "../../service/cartItemService";
+import { getCartItems, updateQuantity } from "../../service/cartItemService";
 import { CarouselItem } from "react-bootstrap";
 
 export default function CartItemServiceCheck(this: any) {
@@ -50,15 +50,15 @@ export default function CartItemServiceCheck(this: any) {
       .getCartItems(jwtAccessToken as string)
       .then((response) => {
         // 再レンダリングを防ぐために、レスポンスのデータが変わっている場合のみsetCurrentCartItemsを実行する。
-        if (
-          (response.data as CartItem[]).toString() !=
-          currentCartItems.toString()
-        ) {
+        // if ((response.data as CartItem[]).toString() != currentCartItems.toString()) // ToString()だとエラーになるのでJSON.stringifyに修正
+		if(JSON.stringify(response.data as CartItem[]) != JSON.stringify(currentCartItems)) 
+		{
           setCurrentCartItems(response.data);
+		  console.log("cartItems are set");
           console.log(response.data);
         }
 
-        console.log("cartItems are set");
+       
       })
       .catch((error) => {
         console.log("cartItems are not set");
@@ -77,7 +77,7 @@ export default function CartItemServiceCheck(this: any) {
       customerId: 0,
     };
 
-     await cartItemService
+    await cartItemService
       .addProductCart(inputCartItem, jwtAccessToken as string)
       .then((response) => {
         console.log(response.data);
@@ -94,6 +94,32 @@ export default function CartItemServiceCheck(this: any) {
     await addCartItem();
     console.log("between addCartItem and getCartItems");
     await getCartItems();
+  };
+
+  const updateQuantitAndGetCartItemsyHandler = async () => {
+    await updateQuantity();
+    console.log("between updateQuantity and getCartItems");
+    await getCartItems();
+  };
+
+  let updateInputquantiy: number = 0;
+  let updateInputProductId: number = 0;
+
+  const updateQuantity = async () => {
+    const updateCarItem: CartItem = {
+      productId: updateInputProductId as number,
+      quantity: updateInputquantiy as number,
+      id: 0, // 使わない
+      customerId: 0, // 使わない
+    };
+    await cartItemService
+      .updateQuantity(updateCarItem, jwtAccessToken as string)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("update is failed");
+      });
   };
 
   const removeCartItemHandler = (event: React.FormEvent<HTMLFormElement>) => {};
@@ -136,6 +162,28 @@ export default function CartItemServiceCheck(this: any) {
         }
       />
       <button onClick={addCartItemHandler}>カートアイテム追加</button>
+     
+	  <h1>カートアイテムの数量を変更</h1>
+      <label>数量変更する商品ID</label>
+      <input
+        type="text"
+        placeholder="商品ID"
+        onChange={(event) =>
+          (updateInputProductId = event.target.value as unknown as number)
+        }
+      />
+	  <br/>
+
+      <label>数量</label>
+      <input
+        type="text"
+        placeholder="数量"
+        onChange={(event) =>
+          (updateInputquantiy = event.target.value as unknown as number)
+        }
+      />
+	  <br/>
+	<button onClick={updateQuantitAndGetCartItemsyHandler}>数量変更</button>
       <h1>カートアイテムを1つ削除</h1>
       {/* <form onSubmit={removeCartItemHandler}>
 					<label> 商品ID</label>
