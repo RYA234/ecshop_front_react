@@ -6,6 +6,7 @@ import * as cartItemService from "../../service/cartItemService";
 import { AxiosResponse } from "axios";
 import { getCartItems, updateQuantity } from "../../service/cartItemService";
 import { CarouselItem } from "react-bootstrap";
+import { reverse } from "dns/promises";
 
 export default function CartItemServiceCheck(this: any) {
   const [currentCartItems, setCurrentCartItems] = useState<CartItem[]>([]);
@@ -121,8 +122,33 @@ export default function CartItemServiceCheck(this: any) {
         console.log("update is failed");
       });
   };
+  let removeInputProductId: number = 0;
 
-  const removeCartItemHandler = (event: React.FormEvent<HTMLFormElement>) => {};
+   
+
+  const removeCartItemAndGetItemsHandler = async () => {
+	await removeCartItem();
+
+	await getCartItems();
+  };
+
+  const removeCartItem = async () => {
+	const removeCartItem:CartItem = {
+		productId: removeInputProductId as number,
+		id: 0,
+		customerId: 0,
+		quantity: 0
+	}
+
+	await cartItemService
+	.removeProduct(removeCartItem, jwtAccessToken as string)
+	.then((response) => {
+		console.log(response.data)
+	})
+	.catch((error) => {
+		console.log(error)
+	})
+  }
 
   const deleteCartItemHandler = (event: React.FormEvent<HTMLFormElement>) => {};
 
@@ -185,11 +211,14 @@ export default function CartItemServiceCheck(this: any) {
 	  <br/>
 	<button onClick={updateQuantitAndGetCartItemsyHandler}>数量変更</button>
       <h1>カートアイテムを1つ削除</h1>
-      {/* <form onSubmit={removeCartItemHandler}>
 					<label> 商品ID</label>
-					<input type ="text" placeholder="削除したい商品ID"/>
-					<button type="submit">削除</button>
-				</form> */}
+					<input 
+						type ="text" 
+						placeholder="削除したい商品ID"
+						onChange={(event) => (removeInputProductId = event.target.value as unknown as number)}	
+					/>
+					<button onClick={removeCartItemAndGetItemsHandler}>remove</button>
+			
       <h1>カートアイテムを全削除</h1>
       <form onSubmit={deleteCartItemHandler}></form>
     </>
