@@ -57,7 +57,6 @@ export default function CartItemServiceCheck(this: any) {
       .getCartItems(jwtAccessToken as string)
       .then((response) => {
         // 再レンダリングを防ぐために、レスポンスのデータが変わっている場合のみsetCurrentCartItemsを実行する。
-        // if ((response.data as CartItem[]).toString() != currentCartItems.toString()) // ToString()だとエラーになるのでJSON.stringifyに修正
         if (
           JSON.stringify(response.data as CartItem[]) !=
           JSON.stringify(currentCartItems)
