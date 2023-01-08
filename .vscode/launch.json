@@ -1,0 +1,16 @@
+{
+	"configurations": [
+		{
+			"type": "chrome",
+			"name": "http://127.0.0.1:3000/",
+			"request": "launch",
+			"url": "http://127.0.0.1:3000/"
+		},
+		{
+			"type": "chrome",
+			"name": "http://127.0.0.1:3001/ecshop_front/pages/develop/productBrief.tsx",
+			"request": "launch",
+			"url": "http://127.0.0.1:3001/ecshop_front/pages/develop/productBrief.tsx"
+		}
+	]
+}
