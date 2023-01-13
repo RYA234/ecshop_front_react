@@ -50,6 +50,7 @@ export default function ProductContent(props : Props){
 					position:relative;
 					flex:1;
 					width:200px;
+					height:350px;
 				}
 				// 税抜き価格と数量のレイアウト（横並び-等間隔）
 				.PriceWithoutTaxAndQuantityLayout{
