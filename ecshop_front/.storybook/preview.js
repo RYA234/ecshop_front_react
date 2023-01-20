@@ -1,3 +1,6 @@
+import Image from 'next/image';
+
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -6,4 +9,14 @@ export const parameters = {
       date: /Date$/,
     },
   },
+
+
 }
+Image.propTypes = {
+	unoptimized: null,
+  };
+  
+  Image.defaultProps = {
+	unoptimized: true,
+  };
+  
