@@ -41,9 +41,7 @@ export default function PaginationCheckThird() {
 				)
 			})
 			}
-			
-			
-			<Pagination totalPage={pagingProduct?.totalPages} pageNo={pageNo} setPageNo={setPageNo}/>
+			<Pagination totalPage={pagingProduct?.totalPages as number} pageNo={pageNo} setPageNo={setPageNo}/>
 		</>
 	)
 }

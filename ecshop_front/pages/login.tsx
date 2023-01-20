@@ -43,7 +43,7 @@ export default function Login() {
         <Form.Control type="email" placeholder="Enter email" value={email} onChange={(event) => setEmail(event.target.value)}/><br/>
 		<p>{email}</p>
         <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
+        ver share your email with anyone else.
         </Form.Text>
       </Form.Group>
 
