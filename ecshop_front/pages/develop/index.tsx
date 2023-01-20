@@ -14,6 +14,11 @@ export default function Home() {
 	return(
 		<div>
 			<h1>開発者用ページ</h1>
+			<h2>File Base Routing in nextjs</h2>
+			<Link href="/develop/routing">Routing検証ページ</Link>
+			<br/><br/>
+			
+			
 			<Link href="/develop/axiosapi">1.axiosを使ってRestApiからデータを取得する</Link>
 			<br/><br/>
 
@@ -28,7 +33,8 @@ export default function Home() {
 			<Link href="/develop/productServiceCheck">7.商品apiを検証する</Link>
 			<br/><br/>
 			<Link href="/develop/cartItemServiceCheck">8.買い物カゴapiを検証する</Link>
-			<br/><br/>		
+			<br/><br/>
+
 		</div>
 	)
 }
