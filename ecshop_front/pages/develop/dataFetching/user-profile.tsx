@@ -7,7 +7,7 @@ function UserProfilePage(props : any) {
   export default UserProfilePage;
   
   export async function getServerSideProps(context: any) {
-	console.log("SSR")
+	console.log("シンプルなSSR実装例")
 	const { params, req, res } = context;
 	
 	return {
