@@ -8,5 +8,11 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions"
   ],
-  "framework": "@storybook/react"
+  "framework": "@storybook/react",
+  "staticDirs": ["../public"],
+  "core": {
+    "builder": "webpack4"
+  },
+
+
 }

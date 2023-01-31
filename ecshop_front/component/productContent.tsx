@@ -3,7 +3,7 @@ import Image from 'next/image';
 interface Props{
 	productName:string;
 	priceWithoutTax:number;
-	priceIncludingTax:number;
+	priceIncludingTax:string;
 	imageURL:string;
 }
 /**

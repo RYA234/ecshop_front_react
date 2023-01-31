@@ -9,7 +9,7 @@ export default function ProductBriefSecond(){
 
 	return(
 		<>
-			<ProductContent productName='サンプル商品' priceWithoutTax={100} priceIncludingTax={108} imageURL='/sampleProduct1.JPG'/>
+			<ProductContent productName='サンプル商品' priceWithoutTax={100} priceIncludingTax={'108'} imageURL='/sampleProduct1.JPG'/>
 		</>
 	)
 

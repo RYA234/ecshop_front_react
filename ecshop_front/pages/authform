@@ -1,0 +1,149 @@
+// /* eslint-disable react/jsx-no-undef */
+// import { useContext, useRef, useState } from 'react';
+// import { Button, CarouselItem, Form } from 'react-bootstrap';
+// import AuthContext from '../store/auth-context';
+// import { useRouter } from 'next/router';
+// import Image from 'next/image';
+
+
+// export default function Authform() {
+// 	const emailInputRef = useRef<HTMLInputElement | null>(null);
+	
+// 	const passwordInputRef = useRef<String>();
+// 	const [jwtAccessToken, setJwtAccessToken] = useState<string | null>();
+// 	const router = useRouter();
+// 	const authCtx = useContext(AuthContext);
+// 	const [isLoading, setIsLoading] = useState(false);
+
+// 	type cartItemType = {
+// 		id:number,
+// 		customerId:number,
+// 		productId:number,
+// 		quantity:number,
+// 	}
+// 	const [presentCartItems, setPresentCartItems] = useState<cartItemType[]>([]);
+// 	const getCartItemHandler = (event:Event) => {
+// 		fetch('http://localhost:5000/api/cart/all', {
+// 			// mode: 'cors',
+// 			method: 'GET',
+// 			headers: {
+// 				'Content-Type': 'application/json',
+// 				'Authorization': "Bearer " + localStorage.getItem('accessToken'),
+// 			},
+// 		}).then(res => {
+// 			return res.json();
+// 		}).then((cartItems) => {
+// 							cartItems.map((cartItem : cartItemType) => { 
+// 							setPresentCartItems(presentCartItems => [...presentCartItems,{
+// 								id:cartItem.id,
+// 								customerId:cartItem.customerId,
+// 								productId:cartItem.productId,
+// 								quantity:cartItem.quantity
+// 							}]);
+// 							console.log(presentCartItems);
+// 							}
+// 							)
+// 			});
+// 	};
+// 	const submitHandler = (event:Event) => {
+// 		event.preventDefault();
+// 		const enteredEmail = emailInputRef.current.valueOf();
+// 		const enteredPassword  = passwordInputRef.current.value ;
+// 		const url = 'http://localhost:5000/api/auth/signin';
+
+// 		fetch(url, {
+// 			method: 'POST',
+// 			body: JSON.stringify({
+// 				email: enteredEmail,
+// 				password: enteredPassword,
+// 				returnSecureToken: true
+// 			}),
+// 			headers: {
+// 				'Content-Type': 'application/json'
+// 			},
+// 		}).then((res) => {
+// 			if (res.ok) {
+// 				return res.json();
+// 			} else {
+// 				return res.json().then((data) => {
+// 					let errorMessage = 'Authentication failed!';
+// 					if (data && data.error && data.error.message) {
+// 						errorMessage = data.error.message;
+// 					}
+// 					throw new Error(errorMessage);
+// 				});
+// 			}
+// 		})
+// 			.then((data) => {
+// 				localStorage.setItem('accessToken', data.accessToken);
+				
+// 				setJwtAccessToken(localStorage.getItem('accessToken')) ;
+// 			})
+// 			.catch((err) => {
+// 				localStorage.setItem('accessToken', ' error');
+// 				setJwtAccessToken(localStorage.getItem('accessToken'));
+// 			});
+
+// 	};
+// 	return (
+// 		<>
+// 			<br />
+// 			<Form onSubmit={submitHandler}>
+// 				<h1>１．認証 検証用フォーム</h1><br />
+// 				フロント側:NextJs<br />
+// 				バックエンド側:Springboot SpringSecurity<br />
+// 				動き
+// 				<br />
+// 				URI http://localhost:5000/api/auth/signinにPOST Methodを送ります。<br />
+// 				<br />
+// 				リクエストボディにはjson形式で ユーザーが入力したemailとpasswordが含まれています。<br />
+// 				正しいemailとpasswordが入力された場合、localstorageがJWT-Tokenが収納されます。<br />
+// 				誤ったemailとpasswordが入力された場合、localstorageに「error」が収納されます。<br />
+// 				local:storageの値「UseStateに渡している値」:<br />
+// 				{jwtAccessToken}
+// 				<Form.Group className="mb-3" controlId="formBasicEmail">
+// 					<Form.Label>Email address</Form.Label><br />
+// 					<Form.Control type="email" placeholder="Enter email" required ref={emailInputRef} /><br />
+
+// 					<Form.Text className="text-muted">
+// 						ll never share your email with anyone else.
+// 					</Form.Text>
+// 				</Form.Group>
+
+// 				<Form.Group className="mb-3" controlId="formBasicPassword">
+// 					<Form.Label>Password</Form.Label><br />
+// 					<Form.Control type="password" placeholder="Password" required ref={passwordInputRef} /><br /><br />
+// 				</Form.Group>
+
+// 				<Button variant="primary" type="submit">
+// 					Submit
+// 				</Button>
+// 			</Form>
+// 			<br />
+// 			<Image src='/JWT_Login.JPG'
+// 				width={500}
+// 				height={500}
+// 				alt='logo' />
+// 			<br />
+// 			<br />
+
+// 			<div>
+// 				<h1>２．認証後に要認可のAPIを使えるか確認</h1>
+// 				認証が必要なAPIを叩けるか実際に確認する。<br />
+// 				ユースケース的には、ECショップにおいてユーザーが自分の買い物カゴの情報を取得します。<br />
+// 				<Button onClick={getCartItemHandler}>買い物カゴの情報を取得する。</Button>
+// 				<br />
+// 				id, 商品Id、数量
+// 				 {presentCartItems.map((cartItem:cartItemType) => {
+// 					return(
+// 						// eslint-disable-next-line react/jsx-key
+// 						<div>
+// 						{cartItem.id}  {cartItem.productId} {cartItem.quantity}
+// 						</div>
+// 					)
+// 				 }
+// 				)}
+// 			</div>
+// 		</>
+// 	);
+// }

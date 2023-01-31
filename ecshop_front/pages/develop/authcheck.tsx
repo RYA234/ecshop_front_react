@@ -1,10 +1,9 @@
 import { MouseEventHandler, useRef, useState } from "react";
 import * as customerService from "../../service/customerService";
 import { Customer } from "../../types/customer";
-import { JwtResponse } from "../../types/jwtResponse.t";
 import { Button, CarouselItem, Form } from 'react-bootstrap';
 import { Category } from "../../types/category";
-
+import * as cartItemService from "../../service/cartItemService";
 
 /**
  * @remarks 検証用ページ <br/
@@ -56,9 +55,9 @@ export default function Authcheck(){
 
 	// 認可　顧客の買い物かごの情報を取得する。
 	const getCategoriesHandler = (onClick? : React.MouseEvent<HTMLButtonElement> | undefined) => {
-		customerService
+		cartItemService
 		.getCartItems(jwtAccessToken as string)
-		.then((cartItems) => {
+		.then((cartItems: { data: { id: number; customerId: number; productId: number; quantity: number; }[]; }) => {
 				cartItems.data.map((cartItem : cartItemType) => { 
 				setPresentCartItems(presentCartItems => [...presentCartItems,{
 					id:cartItem.id,
