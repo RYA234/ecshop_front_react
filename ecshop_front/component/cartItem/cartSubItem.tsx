@@ -8,27 +8,28 @@ interface cartSubItemProps{
 	amount:number;
 }
 
-export const onDeleteHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-	console.log("delete")
-}
-
-export const onAmountChangeHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-	console.log("modify");
-}
-
-
-
-export default function cartSubItem({productName,priceWithoutTax,priceIncludingTax, amount,onAmountChange}:cartSubItemProps) {
+export default function cartSubItem({productName,priceWithoutTax,priceIncludingTax, amount}:cartSubItemProps) {
 // export default function cartSubItem(props:{productName:string,priceWithoutTax:number,priceIncludingTax:number, amount:number}) {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const [clickedButton, setClickedButton] = useState<string>(`null`);
 
-	// const onAmountChange = (event: React.MouseEvent<HTMLButtonElement>) => {
-	//   event.preventDefault();
-  
-	//   const button: HTMLButtonElement = event.currentTarget;
-	//   setClickedButton(button.name);
-	// };
+	
+	 const onAmountChangeHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+		console.log(productName + "を更新しました。" );
+		// PUTのAPIを叩く
+
+		// GETのAPIを叩く
+
+	}
+
+	
+	 const onDeleteHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+		console.log(productName + "を削除しました。");
+	
+		// DELETEのAPIを叩く
+
+		// GETのAPIを叩く
+	}
 	
 	return (
 		<div className="Layout">
@@ -45,6 +46,7 @@ export default function cartSubItem({productName,priceWithoutTax,priceIncludingT
 				</select>
 				<button className="ModifyButton" onClick={onAmountChangeHandler}>修正</button>
 				<button className="DeleteButton" onClick ={onDeleteHandler}>削除</button>
+
 			</div>
 			<style jsx>{`
 				.Layout{
@@ -52,6 +54,7 @@ export default function cartSubItem({productName,priceWithoutTax,priceIncludingT
 					flex-direction: column;
 					width:200px;
 					aligh-items: center;
+					border: 1px solid black;
 				}
 				.SubLayout{
 					display: flex;

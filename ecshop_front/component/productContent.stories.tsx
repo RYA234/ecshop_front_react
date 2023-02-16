@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import  ProductContent  from '.././component/productContent';
+import  ProductContent  from './product/productContent';
 
 export default{
 	title:'Example/pagination',

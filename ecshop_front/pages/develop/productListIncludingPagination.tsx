@@ -1,15 +1,16 @@
 import { SetStateAction, useEffect, useState } from "react";
-import ProductContent from "../../component/productContent"
+import ProductContent from "../../component/product/productContent"
 import { ProductRequest } from "../../types/product/productRequest";
 import * as productService from '../../service/productService';
 import { Product } from "../../types/product/product";
-import Pagination from "../../component/pagination";
+import Pagination from "../../component/product/pagination";
 
 
 // 商品一覧機能検証ページその3（ページング機能あり）
 // 商品コンポーネント使う
 // restapiを使う
 // ページネーション機能を新規追加する
+// http://127.0.0.1:3000/develop/productListIncludingPagination
 export default function ProductListIncludingPagination(){
 
 	const [pagingProduct, setPagingProduct] = useState<ProductRequest | undefined>()

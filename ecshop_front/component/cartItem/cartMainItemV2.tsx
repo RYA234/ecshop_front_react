@@ -1,36 +1,32 @@
 
-import CartSubItem from "../cartItem/cartSubItem";
-
-export default function cartMainItem(props:{totalCost:number,productsCost:number,shippingCost:number,taxCost:number,cartSubItemContents : JSX.Element[]}) {
+import { useContext, useState } from "react";
+import {SubCartItemContext } from '../../pages/develop/cartItem/withApi';
+// ショッピングカートの金額情報を表示するコンポーネント
+export default function CartMainItemV2(this :any) {	
 	
+	const {cartItemsResponse} : any= useContext(SubCartItemContext)
+	console.log("cartItemsResponse is" + cartItemsResponse)
 	return (
-
-		<div className="Layout">		
+		<div className="Layout" key={cartItemsResponse}>		
 			<div className="Title">買い物カゴの中身</div>
 			<button className="PurchaseButton">決済へ</button>
 			<div className="MoneyInfomation">
 				<div>合計額:</div>
-				<div>{props.totalCost}円</div>
+				{/* cartItemsResponse.totalだとエラーになる「TypeError: Cannot read properties of undefined」 */}
+				<div>{cartItemsResponse?.total}円</div>
 			</div>
 			<div className="MoneyInfomation">
 				<div>商品小計:</div>
-				<div>{props.productsCost}円</div>
+				<div>{cartItemsResponse?.productCost}円</div>
 			</div>
 			<div className="MoneyInfomation">
 				<div>配送料:</div>
-				<div>{props.shippingCost}円</div>
+				<div>{cartItemsResponse?.shippingCost}円</div>
 			</div>
 			<div className="MoneyInfomation">
 				<div>消費税:</div>
-				<div>{props.taxCost}円</div>
+				<div>{cartItemsResponse?.tax}円</div>
 			</div>
-			{
-				props.cartSubItemContents.map((cartSubItem,index)=>{
-					return (
-						cartSubItem
-					)
-				})
-			}
 			<style jsx>{`
 				footer{
 				}

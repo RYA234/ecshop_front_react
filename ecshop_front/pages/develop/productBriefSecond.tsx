@@ -1,4 +1,4 @@
-import ProductContent from "../../component/productContent"
+import ProductContent from "../../component/product/productContent"
 
 /**
  * @remarks ProductContentのレイアウトを確認するためのページ

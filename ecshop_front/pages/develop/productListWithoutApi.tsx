@@ -1,5 +1,5 @@
 import { SetStateAction, useEffect, useState } from "react";
-import ProductContent from "../../component/productContent"
+import ProductContent from "../../component/product/productContent"
 import { ProductRequest } from "../../types/product/productRequest";
 import * as productService from '../../service/productService';
 import { Product } from "../../types/product/product";
