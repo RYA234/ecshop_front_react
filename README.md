@@ -58,10 +58,11 @@ React-Test-Library||ユニットテストライブラリ
 .storybook|storybookの設定ファイル置き場
 component|Reactで作ったUIコンポーネント置き場
 pages|Next.js標準の機能
+pages/develop|開発の最中で
 public||検証用の画像の置き場
 service||axiosでRESTAPIを呼んでいるファイルの置き場
 stories|storybookのプロダクトコードの置き場1
-types|EntityやApiのResponseなどを定義している型ファイルの置き場
+types|型定義ファイルの置き場
 
 
 
@@ -96,6 +97,11 @@ npm run test
 開発する上で役に立った公式ドキュメント以外の資料
 
 書籍：
+
+
+## 開発メモ
+qiitaに実装の方法などをメモしました。
+興味がある人は確認お願いします。
 
 
 
