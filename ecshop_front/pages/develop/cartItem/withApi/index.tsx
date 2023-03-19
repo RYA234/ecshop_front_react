@@ -15,15 +15,16 @@ import { CartItemResponse } from "../../../../types/cartItem/cartItemResponse";
 export const SubCartItemContext = createContext();
 
 export default function Index() {
-  // ログイン処理は初回時のみ実行
-  useEffect(() => {
-    loginAndGetCartItem();
-  }, []);
+
 
   // carItemのResponse　Contextで子コンポーネントに渡す
   const [cartItemsResponse, setCartItemsResponse] =
     useState<CartItemResponse>();
 
+  // ログイン処理は初回時のみ実行
+  useEffect(() => {
+    loginAndGetCartItem();
+  }, []);
   // ログインするときに必要なユーザー情報
   const loginRequestBody: Customer = {
     email: "aaaba@gmail.com",

@@ -39,12 +39,44 @@ export   function signIn2({email,password}: Customer):Promise<string>{
 		return error;
 	});	 
 };
+export const register= async (inputEmail:string,inputPassword:string) =>{
+	return await axios.post(`http://127.0.0.1:5000/api/auth/signup`,
+	{
+		'email':inputEmail,
+		'password':inputPassword
+},
+
+)
+.then((response)=>{
+	return response;
+})
+.catch((error)=>{
+	return error;
+})}
+
+export const verify= async (verifyCode:string) =>{
+	return await axios.put(`http://127.0.0.1:5000/api/auth/verify`,
+	{
+		'verifyCode':verifyCode
+},
+{ headers : {
+	'Request-Method' : 'PUT',
+	'Content-Type': 'application/json',
+	'Access-Control-Allow-Origin': 'http://127.0.0.1:5000/*',
+	'Access-Control-Allow-Headers': 'accept, accept-language, content-language, content-type',
+	'Access-Control-Allow-Credentials': 'true'
+}}
+)
+.then((response)=>{
+	return response;
+})
+.catch((error)=>{
+	return error;
+})}
 
 export const logout =()=>{
 	return axios.post(`http://127.0.0.1:5000/api/auth/logout`);
 }
 
 
-export function getCartItems(arg0: string) {
-	throw new Error("Function not implemented.");
-}
+

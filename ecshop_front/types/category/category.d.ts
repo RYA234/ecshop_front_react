@@ -13,5 +13,7 @@ export  type Category = {
 	/**　html上で表示されるカテゴリー名称です。日本語が入ることを想定してます。 */
 	name:string
 	/** サブカテゴリーです。サブカテゴリーを持つ場合対応するidが入ります。サブカテゴリーがない場合はnullが入ります。 */
-	children:number[]
+	children:number[];
+	// 親カテゴリーのidが入ります。親が存在する場合はそのidが入ります。親が存在しない場合はnullが入ります。
+	parent : number;
 }

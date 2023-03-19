@@ -1,4 +1,4 @@
-import { Category } from "../../types/category";
+import { Category } from "../../types/category/category";
 import * as categoryService from "../../service/categoryService";
 import { useEffect, useRef, useState } from "react";
 

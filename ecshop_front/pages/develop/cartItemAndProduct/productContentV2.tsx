@@ -3,6 +3,9 @@ import { useContext, useState,useEffect } from 'react';
 import { mainContext } from '.';
 import * as CartItemService2 from "../../../service/cartItemServiceV2";
 import { CartItemResponse } from '../../../types/cartItem/cartItemResponse';
+import { ProductResponse } from '../../../types/product/productResponse';
+import * as productServiceV2 from '../../../service/productServiceV2';
+
 interface Props{
 	id:number;
 	productName:string;
@@ -54,6 +57,7 @@ export default function ProductContentV2(props : Props){
     );
 	 setCartItemsResponse(response);
   };
+
 	return(
 		<>
 			<div className = 'ContentPadding ContentLayout'>
