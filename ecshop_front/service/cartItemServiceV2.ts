@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { response } from 'msw';
+import { CartItemResponse } from '../types/cartItem/cartItemResponse';
 
 
 /**
@@ -70,10 +71,7 @@ export const getCartItems =(jwtAccessKey : string)=>{
 	)
 		.then((response) => {
 			{
-				 const cartItems: CartItem[] =  response.data;
-				console.log(cartItems);
-				console.log("service is ended");
-				return response.data as AxiosResponse<CartItem[]>;
+				return response.data as AxiosResponse<CartItemResponse>;
 			}
 		})
 		.catch((error) => {

@@ -1,6 +1,10 @@
 
 
+
 # ドメイン情報
+Stripe 実装方法
+https://stripe.com/docs/checkout/quickstart?client=react&lang=java
+
 ## 概要
 本リポジトリはB2C向けECショップのクローンWEBアプリケーションです。
 杏○堂ネットスーパーのようなサイトを想定しています。

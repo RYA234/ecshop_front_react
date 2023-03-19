@@ -9,7 +9,7 @@ import PaginationV2 from './paginationV2';
 
 export default function ProductView(){
 	// 商品情報のhttpレスポンス
-	const {productResponse,setProductResponse}:any = useContext(mainContext)
+	const {productResponse,setProductResponse,categoryId}:any = useContext(mainContext)
 	// ページ番号
 	const [pageNo,setPageNo] = useState<number>(1)
 	
@@ -17,17 +17,29 @@ export default function ProductView(){
 	const pageSize : number = 10;
 	
 	// 検証のためにカテゴリーIDを1に固定
-	const categoryId : number = 1;
+	// const categoryId : number = 1;
 	
 	// pageNoが変わるとgetProductByCategoryが実行される
 	useEffect(() => {
 		getProductByCategory()
 	},[pageNo])
 	
+	// categoryIdが変わるとgetProductByCategoryが実行されてpageNoを1に戻す。
+	useEffect(() => {
+		getProductOnChangeCategory()
+	},[categoryId])
+	
+
 	// ページネーション化されたカテゴリー毎の商品情報たちを取得する。
 	const getProductByCategory = async () => {
 		const response : ProductResponse= await productServiceV2.getProductsByCategoryId2(pageNo - 1,pageSize,categoryId)
-		setProductResponse(response)
+		await setProductResponse(response)
+	}
+
+	const getProductOnChangeCategory = async () => {
+		const response : ProductResponse= await productServiceV2.getProductsByCategoryId2(0,pageSize,categoryId)
+		await setPageNo(1);
+		await setProductResponse(response)
 	}
 	return(
 		<>

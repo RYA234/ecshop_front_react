@@ -40,7 +40,7 @@ export default function ProductListIncludingPagination(){
 	return(
 		<>
 			<div>商品一覧</div>
-			<div>カテゴリー：{pagingProduct?.categoryName}</div>
+			{/* <div>カテゴリー：{pagingProduct?.categoryName}</div> */}
 			<div>総ページ数{pagingProduct?.totalPages}</div>
 			<div>現在のページ番号:{(pagingProduct?.pageNo as number) + 1}</div>
 			<div className='Layout'>
@@ -65,7 +65,6 @@ export default function ProductListIncludingPagination(){
 				// 子の幅を指定　これしないとレイアウトが崩れる
 				.Child{
 					flex-basis:200px;
-					//align-self:stretch;
 				}
 			`}</style>			
 		</>
