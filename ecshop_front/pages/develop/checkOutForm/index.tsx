@@ -14,7 +14,7 @@ import {
 } from "@stripe/react-stripe-js";
 // Stripeの公開キーを読み込む
 const stripePromise = loadStripe(
-  "pk_test_51MdNNUEJO02RSJ5FUgM60DZSqfZLgfVZTLB1JsCFKhFgPXGJUzp7vBhAOovUXxLQ2SoU7ykWvPN46SY2zJsOms1900UW3EV2qB"
+  "pk_test_"
 );
 
 // http://127.0.0.1:3000/develop/checkOutForm
