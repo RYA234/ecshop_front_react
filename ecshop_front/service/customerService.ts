@@ -19,7 +19,7 @@ export  const  signIn = ({email,password}: Customer) =>{
 	);
 };
 
-export   function signIn2({email,password}: Customer):Promise<string>{
+export   function signIn2(email:string,password:string):Promise<string>{
 	 return  axios.post(`http://127.0.0.1:5000/api/auth/signin`,
 		 { email: email, password: password },
 		 {	
