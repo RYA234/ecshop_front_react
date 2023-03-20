@@ -1,30 +1,32 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { mainContext } from '../pages/index';
 
 export default function Header() {
 	
-	const [isLogin, setIsLogin] = useState(false);
+	const isLogin  = useContext(mainContext);
 
 
 
 	return (
 		<div>
 		<header>
-			<div className="box1">logo</div>
+			<div className="box1">	{isLogin}</div>
+	
 			<div className="btn-area">
 				{isLogin ? 
 				<>
 					<button>ログアウト</button> 
-					<button>マイページ</button>
-									
+
+					<button>マイページ</button>					
 				</>
 				: 
 				<>
 				<div className="link">
-					<Link href="/login">新規登録</Link>
+					<Link href="/login">ログイン</Link>
 				</div>
 				<div className="link">
-					<Link href="register">ログイン</Link>
+					<Link href="register">新規登録</Link>
 				</div>
 				</>
 			}	
