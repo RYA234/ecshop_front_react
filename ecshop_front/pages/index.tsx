@@ -7,12 +7,13 @@ import * as CategoryService from "../service/categoryService";
 import CategoryMenu from '../component/categoryMenu';
 import * as productServiceV2 from '../service/productServiceV2';
 import ProductView from '../component/product/productView';
+import * as CartItemService2 from "../service/cartItemServiceV2";
+import CartItemView from './develop/cartItemAndProduct/cartItemView';
+
 // contextの作成
 export const mainContext  = createContext(0);
 // import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Home() {
-
-	
 
 	  // 商品情報のhttpレスポンス
 	  const [productResponse, setProductResponse] = useState<ProductResponse>();
@@ -21,25 +22,47 @@ export default function Home() {
 	  // カテゴリー情報のhttpレスポンス
 	  const [categoryResponse,setCategoryResponse] = useState<Category[]>([]);
 	  const[categoryId,setCategoryId] = useState<number>(1);
+	  const[cartItemResponse,setCartItemResponse] = useState<CartItemResponse>();
+	 
 	  const [pageNo,setPageNo] = useState<number>(1)
+	  const [isLogin,setIsLogin] = useState<boolean>(false)
 	  
+
 	  // １ページあたりの商品数
 	  const pageSize : number = 10;
+
+
 
 	  // 初回実行される関数
 	  useEffect(() => {
 		init();
 			},[]);
 
-	// pageNoが変わるとgetProductByCategoryが実行される
+	  useEffect(()=>{
+		getCustomerInformationFromJwtAccessKey();
+	  },[])
+
+	// ローカルストレージのaccessTokenに値が存在する場合ログイン判定をする。
+	const getCustomerInformationFromJwtAccessKey = async () => {
+		if(localStorage.getItem('accessToken') != null){
+			let response = await CartItemService2.getCartItems2(
+				localStorage.getItem('accessToken') as string
+			)
+
+			setCartItemResponse(response)
+			setIsLogin(true)
+			console.log(response)
+		}
+	}
+
 	
+
+
+	// pageNoが変わるとgetProductByCategoryが実行される
 	const init = async ()=>{
 		await getCategory();
 		await getProductByCategory();
-	}
-
-
-	  
+	}	  
   // カテゴリーの情報を取得する
     const getCategory = async () => {
 		const response = await CategoryService.getCategories();
@@ -54,12 +77,21 @@ export default function Home() {
 		console.log(response)
 	}
 
+	const getCartItem = async () => {
+		let response: CartItemResponse = await CartItemService2.getCartItems2(
+		  localStorage.getItem("accessToken") as unknown as string
+		);
+		setCartItemsResponse(response);
+		console.log(response);
+	  };
+
 	return (
 
 		<div className = 'headCenterFooter'>
 			<header>
+				<mainContext.Provider value={isLogin}>
 				<Header/>
-
+				</mainContext.Provider>
 			</header>
 			<main>
 				<div className='leftCenterRightInMain'>
@@ -74,18 +106,13 @@ export default function Home() {
 					<mainContext.Provider value={{ productResponse, setProductResponse,setCartItemsResponse,categoryId }}>
 						<ProductView />
 					</mainContext.Provider>
-
-						センター
-						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-						終わり
 					</div>
 
 					<div className="right">
 						右側
+					<mainContext.Provider value={{ cartItemsResponse, setCartItemsResponse }}>
+						<CartItemView />
+					</mainContext.Provider>
 					</div>
 				</div>
 			</main>
@@ -104,6 +131,7 @@ export default function Home() {
 					height: 120px;
 					color:black;
 					background:yellow;
+					z-index: 100;
 				}
 				footer{
 					color:yellow;
@@ -119,11 +147,13 @@ export default function Home() {
 				.leftCenterRightInMain{
 					display: flex;
 					flex-direction: row;
+					
 				}
 				.left{
-					flex:1;
+					flex:0.5;
 					color:rainbow;
 					background:pink;
+					width:100px;
 				}
 				.center{
 					flex:3;
