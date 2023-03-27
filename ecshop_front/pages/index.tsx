@@ -8,7 +8,7 @@ import CategoryMenu from '../component/categoryMenu';
 import * as productServiceV2 from '../service/productServiceV2';
 import ProductView from '../component/product/productView';
 import * as CartItemService2 from "../service/cartItemServiceV2";
-import CartItemView from './develop/cartItemAndProduct/cartItemView';
+import CartItemView from '../component/cartItem/cartItemView';
 
 // contextの作成
 export const mainContext  = createContext(0);
@@ -22,7 +22,6 @@ export default function Home() {
 	  // カテゴリー情報のhttpレスポンス
 	  const [categoryResponse,setCategoryResponse] = useState<Category[]>([]);
 	  const[categoryId,setCategoryId] = useState<number>(1);
-	  const[cartItemResponse,setCartItemResponse] = useState<CartItemResponse>();
 	 
 	  const [pageNo,setPageNo] = useState<number>(1)
 	  const [isLogin,setIsLogin] = useState<boolean>(false)
@@ -49,7 +48,7 @@ export default function Home() {
 				localStorage.getItem('accessToken') as string
 			)
 
-			setCartItemResponse(response)
+			setCartItemsResponse(response)
 			setIsLogin(true)
 			console.log(response)
 		}
@@ -84,7 +83,7 @@ export default function Home() {
 		setCartItemsResponse(response);
 		console.log(response);
 	  };
-
+	console.log(process.env.TEST);
 	return (
 
 		<div className = 'headCenterFooter'>

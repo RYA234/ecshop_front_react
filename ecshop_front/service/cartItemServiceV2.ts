@@ -31,7 +31,7 @@ export const addProductCart = ({productId,quantity}: CartItem, jwtAccessKey:stri
 }
 
 export   function  addProductCart2(productId:number,quantity:number, jwtAccessKey:string){
-	return  axios.post(`http://127.0.0.1:5000/api/cart/add`
+	return  axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + `/api/cart/add`
 	+ `?productId=` +productId
 	+ `&quantity=` +quantity
 	,{},
@@ -39,7 +39,7 @@ export   function  addProductCart2(productId:number,quantity:number, jwtAccessKe
 		'Authorization': `Bearer ${jwtAccessKey}`,
 		'Request-Method' : 'POST',
 		'Content-Type': 'application/json',
-		'Access-Control-Allow-Origin': 'http://127.0.0.1:5000/*',
+		'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_BACKEND_URL+'/*',
 		'Access-Control-Allow-Headers': 'accept, accept-language, content-language, content-type',
 		'Access-Control-Allow-Credentials': 'true'
 	}}
@@ -53,7 +53,7 @@ export   function  addProductCart2(productId:number,quantity:number, jwtAccessKe
 
 //
 export const getCartItems =(jwtAccessKey : string)=>{
-	return axios.get(`http://127.0.0.1:5000/api/cart/all`,
+	return axios.get(process.env.NEXT_PUBLIC_BACKEND_URL + `/api/cart/all`,
 	{ headers : {
 			'Authorization': `Bearer ${jwtAccessKey}`
 		}}
@@ -62,7 +62,7 @@ export const getCartItems =(jwtAccessKey : string)=>{
 }
 
  export  const  getCartItems2  = async (jwtAccessKey : string) => {
-     return  await axios.get(`http://127.0.0.1:5000/api/cart/all`,
+     return  await axios.get(process.env.NEXT_PUBLIC_BACKEND_URL+`/api/cart/all`,
 		{
 			headers: {
 				'Authorization': `Bearer ${jwtAccessKey}`
@@ -83,7 +83,7 @@ export const getCartItems =(jwtAccessKey : string)=>{
 
 // 
 export const updateQuantity = ({productId,quantity}:CartItem,jwtAccessKey:string) =>{
-	return axios.put(`http://127.0.0.1:5000/api/cart/update`
+	return axios.put(process.env.NEXT_PUBLIC_BACKEND_URL+`/api/cart/update`
 	+ `?productId=` +productId
 	+ `&quantity=` +quantity,
 	{},
@@ -91,7 +91,7 @@ export const updateQuantity = ({productId,quantity}:CartItem,jwtAccessKey:string
 			'Authorization': `Bearer ${jwtAccessKey}`,
 			'Request-Method' : 'PUT',
 			'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': 'http://127.0.0.1:5000/*',
+			'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_BACKEND_URL + '/*',
 			'Access-Control-Allow-Headers': 'accept, accept-language, content-language, content-type',
 			'Access-Control-Allow-Credentials': 'true'
 	}}
@@ -99,7 +99,7 @@ export const updateQuantity = ({productId,quantity}:CartItem,jwtAccessKey:string
 }
 
 export const updateQuantity2 = async (productId:number,quantity:number,jwtAccessKey:string) =>{
-	return await axios.put(`http://127.0.0.1:5000/api/cart/update`
+	return await axios.put(process.env.NEXT_PUBLIC_BACKEND_URL+ `/api/cart/update`
 	+ `?productId=` +productId
 	+ `&quantity=` +quantity,
 	{},
@@ -107,7 +107,7 @@ export const updateQuantity2 = async (productId:number,quantity:number,jwtAccess
 			'Authorization': `Bearer ${jwtAccessKey}`,
 			'Request-Method' : 'PUT',
 			'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': 'http://127.0.0.1:5000/*',
+			'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_BACKEND_URL+'/*',
 			'Access-Control-Allow-Headers': 'accept, accept-language, content-language, content-type',
 			'Access-Control-Allow-Credentials': 'true'
 	}}
@@ -121,7 +121,7 @@ export const updateQuantity2 = async (productId:number,quantity:number,jwtAccess
 }
 
 export const removeProduct = (productId:number, jwtAccessKey:string) =>{
-return axios.delete(`http://127.0.0.1:5000/api/cart/remove`
+return axios.delete(process.env.NEXT_PUBLIC_BACKEND_URL+`/api/cart/remove`
 	+`?productId=`+ productId,
 	{ headers : {
 			'Authorization': `Bearer ${jwtAccessKey}`
@@ -130,7 +130,7 @@ return axios.delete(`http://127.0.0.1:5000/api/cart/remove`
 }
 
 export const removeProduct2 = async (productId:number, jwtAccessKey:string) =>{
-	return await axios.delete(`http://127.0.0.1:5000/api/cart/remove`
+	return await axios.delete(process.env.NEXT_PUBLIC_BACKEND_URL+`/api/cart/remove`
 		+`?productId=`+ productId,
 		{ headers : {
 				'Authorization': `Bearer ${jwtAccessKey}`
@@ -146,7 +146,7 @@ export const removeProduct2 = async (productId:number, jwtAccessKey:string) =>{
 	}
 
 export const deleteByCustomer = (jwtAccessKey:string) =>{
-	return axios.delete(`http://127.0.0.1:5000/api/cart/delete`,
+	return axios.delete(process.env.NEXT_PUBLIC_BACKEND_URL+`/api/cart/delete`,
 	{ headers : {
 			'Authorization': `Bearer ${jwtAccessKey}`
 	}}

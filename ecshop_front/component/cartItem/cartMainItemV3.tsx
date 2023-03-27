@@ -1,6 +1,6 @@
 
 import { useContext, useState } from "react";
-import {mainContext } from './index';
+import {mainContext } from '../../pages/index';
 // ショッピングカートの金額情報を表示するコンポーネント
 export default function CartMainItemV3(this :any) {	
 	

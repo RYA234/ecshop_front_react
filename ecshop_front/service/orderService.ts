@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 
 
 export const createPaymentIntent = async (amount:number,currency:string,receiptEmail:string) =>{
-    return await axios.post(`http://127.0.0.1:5000/api/pay/payment-intent`,
+    return await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL+`/api/pay/payment-intent`,
     {amount:amount,currency:currency,receiptEmail:receiptEmail},
     {
         headers: {
@@ -23,7 +23,7 @@ export const createPaymentIntent = async (amount:number,currency:string,receiptE
 }
 
 export const  completePayment = async (jwtAccessKey : string )=>{
-    return await axios.put(`http://127.0.0.1:5000/api/pay/finish`,{},
+    return await axios.put(process.env.NEXT_PUBLIC_BACKEND_URL+`/api/pay/finish`,{},
     { headers : {
 		'Authorization': `Bearer ${jwtAccessKey}`,
 		'Request-Method' : 'PUT',

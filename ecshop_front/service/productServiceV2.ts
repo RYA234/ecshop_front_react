@@ -4,7 +4,7 @@ import { ProductResponse } from '../types/product/productResponse';
 
 
 export const getProductById2 = async ( productId : number) =>{
-	return await axios.get(`http://127.0.0.1:5000/api/products/?id=`+ productId,
+	return await axios.get(process.env.NEXT_PUBLIC_BACKEND_URL+`/api/products/?id=`+ productId,
 	{ headers: { 
 		'Access-Control-Allow-Origin': '*',
 	} } 
@@ -18,7 +18,7 @@ export const getProductById2 = async ( productId : number) =>{
 };
 
 export const getProductsByCategoryId2 = async ( pageNo : number,pageSize:number, categoryId:number) =>{
-	return await axios.get(`http://127.0.0.1:5000/api/products?`
+	return await axios.get( process.env.NEXT_PUBLIC_BACKEND_URL + `/api/products?`
 					+`pageNo=`+ pageNo
 					+`&pageSize=`+ pageSize
 					+`&category=`+ categoryId,
@@ -31,3 +31,7 @@ export const getProductsByCategoryId2 = async ( pageNo : number,pageSize:number,
 					});
 					
 };
+
+export function getCartItems() {
+	throw new Error('Function not implemented.');
+}
