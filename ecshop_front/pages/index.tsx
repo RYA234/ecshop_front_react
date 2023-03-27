@@ -39,8 +39,11 @@ export default function Home() {
 
 	  useEffect(()=>{
 		getCustomerInformationFromJwtAccessKey();
-	  },[])
-
+	  },[isLogin])
+	const changeLogins = async () =>{
+	
+	}
+	
 	// ローカルストレージのaccessTokenに値が存在する場合ログイン判定をする。
 	const getCustomerInformationFromJwtAccessKey = async () => {
 		if(localStorage.getItem('accessToken') != null){
@@ -51,12 +54,11 @@ export default function Home() {
 			setCartItemsResponse(response)
 			setIsLogin(true)
 			console.log(response)
+		}else{
+			setIsLogin(false);
+			setCartItemsResponse(undefined);
 		}
 	}
-
-	
-
-
 	// pageNoが変わるとgetProductByCategoryが実行される
 	const init = async ()=>{
 		await getCategory();
@@ -88,7 +90,7 @@ export default function Home() {
 
 		<div className = 'headCenterFooter'>
 			<header>
-				<mainContext.Provider value={isLogin}>
+				<mainContext.Provider value={{isLogin,setIsLogin}}>
 				<Header/>
 				</mainContext.Provider>
 			</header>

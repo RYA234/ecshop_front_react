@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { CartItemView } from "../../../../component/cartItem/CartItemView";
+import { CartItemView } from "../../../../component/cartItem/cartItemView";
 import CartMainItemV2 from "../../../../component/cartItem/cartMainItemV2";
 import CartSubItemV2 from "../../../../component/cartItem/cartSubItemV2";
 import CartMainItemStories from "../../../../stories/cartMainItem.stories";

@@ -4,9 +4,13 @@ import { mainContext } from '../pages/index';
 
 export default function Header() {
 	
-	const isLogin  = useContext(mainContext);
+	const {isLogin,setIsLogin} : any = useContext(mainContext);
 
 
+	const onLogoutButtonHandler = async() => {
+		localStorage.removeItem("accessToken")
+		setIsLogin(false)
+	}
 
 	return (
 		<div>
@@ -16,7 +20,12 @@ export default function Header() {
 			<div className="btn-area">
 				{isLogin ? 
 				<>
-					<button>ログアウト</button> 
+					<button 
+						onClick={onLogoutButtonHandler}
+					>
+						
+						ログアウト
+					</button> 
 
 					<button>マイページ</button>					
 				</>
