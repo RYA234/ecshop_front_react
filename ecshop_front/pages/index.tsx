@@ -90,6 +90,7 @@ export default function Home() {
 
 		<div className = 'headCenterFooter'>
 			<header>
+				
 				<mainContext.Provider value={{isLogin,setIsLogin}}>
 				<Header/>
 				</mainContext.Provider>

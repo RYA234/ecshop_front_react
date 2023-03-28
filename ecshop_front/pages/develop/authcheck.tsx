@@ -2,7 +2,6 @@ import { MouseEventHandler, useRef, useState } from "react";
 import * as customerService from "../../service/customerService";
 import { Customer } from "../../types/customer";
 import { Button, CarouselItem, Form } from 'react-bootstrap';
-import { Category } from "../../types/category";
 import * as cartItemService from "../../service/cartItemService";
 
 /**

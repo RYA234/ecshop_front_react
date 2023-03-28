@@ -36,7 +36,7 @@ export default function Index() {
   let tempTotal: any;
 
   // 支払い画面を作るために必要な情報を格納する変数
-  let options = {
+  let options :StripeElementsOptions = {
     appearance: {
       theme: "stripe",
     },
@@ -58,7 +58,8 @@ export default function Index() {
   // ログインしてユーザーの買い物カゴ情報を取得し、クレカの支払い情報を作成する。
   const loginAndGetCartItem = async () => {
     // ログイン部分
-    const response = await CustomerService.signIn2(loginRequestBody);
+    // const response = await CustomerService.signIn2(loginRequestBody);
+    const response ="a";
     localStorage.setItem("accessToken", response);
     await getCartItem();
     await createPaymentIntent(tempTotal);

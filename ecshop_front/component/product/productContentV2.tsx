@@ -70,7 +70,7 @@ export default function ProductContentV2(props : Props){
 					<div>{`税抜` + props.priceWithoutTax  +`円`}</div>
 					<div>数量</div>
 					<div>
-						<select value={tempNum} onChange={(e: React.FormEvent<HTMLSelectElement>)=>onChangeHandler(e)}>
+						<select value={tempNum} onChange={(e: React.ChangeEvent<HTMLSelectElement>)=>onChangeHandler(e)}>
 							<option value={tempNum}>{tempNum}</option>
 							<option value="1">1</option>
 							<option value="2">2</option>

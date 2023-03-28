@@ -7,7 +7,7 @@ import CartMainItem from "../../../component/cartItem/cartMainItem";
 export default function cartItemSubCheck(){
 	return(		
 		<div>
-			<CartMainItem totalCost={400} productsCost={120} shippingCost={1121} taxCost={2112} />
+			{/* <CartMainItem totalCost={400} productsCost={120} shippingCost={1121} taxCost={2112} /> */}
 		</div>
 	)
 }
