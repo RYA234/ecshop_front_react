@@ -13,7 +13,7 @@ import { CartItemResponse } from '../types/cartItem/cartItemResponse';
  */
 
 export const addProductCart = ({productId,quantity}: CartItem, jwtAccessKey:string) =>{
-	return axios.post(`http://127.0.0.1:5000/api/cart/add`
+	return axios.post(process.env.NEXT_PUBLIC_BACKEND_URL+`/api/cart/add`
 	+ `?productId=` +productId
 	+ `&quantity=` +quantity
 	,{},
@@ -21,7 +21,7 @@ export const addProductCart = ({productId,quantity}: CartItem, jwtAccessKey:stri
 		'Authorization': `Bearer ${jwtAccessKey}`,
 		'Request-Method' : 'POST',
 		'Content-Type': 'application/json',
-		'Access-Control-Allow-Origin': 'http://127.0.0.1:5000/*',
+		'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_BACKEND_URL+'/*',
 		'Access-Control-Allow-Headers': 'accept, accept-language, content-language, content-type',
 		'Access-Control-Allow-Credentials': 'true'
 	}}

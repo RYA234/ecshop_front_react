@@ -11,7 +11,7 @@ export  const  signIn = ({email,password}: Customer) =>{
 	{ headers: { 
 		'Request-Method' : 'POST',
 		'Content-Type': 'application/json',
-		'Access-Control-Allow-Origin': 'http://127.0.0.1:5000/*',
+		'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_BACKEND_URL+'/*',
 		'Access-Control-Allow-Headers': '*',
 		'Access-Control-Allow-Credentials': 'true'
 	} } //COR回避
@@ -75,7 +75,7 @@ export const verify= async (verifyCode:string) =>{
 })}
 
 export const logout =()=>{
-	return axios.post(`http://127.0.0.1:5000/api/auth/logout`);
+	return axios.post(process.env.NEXT_PUBLIC_BACKEND_URL+`/api/auth/logout`);
 }
 
 
