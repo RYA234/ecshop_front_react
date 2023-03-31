@@ -49,11 +49,11 @@ export default function Home() {
 		if(localStorage.getItem('accessToken') != null){
 			let response = await CartItemService2.getCartItems2(
 				localStorage.getItem('accessToken') as string
-			)
-
-			setCartItemsResponse(response)
-			setIsLogin(true)
-			console.log(response)
+			).then((response) => {
+				setCartItemsResponse(response)
+				setIsLogin(true)
+				console.log(response)})
+			
 		}else{
 			setIsLogin(false);
 			setCartItemsResponse(undefined);
@@ -112,9 +112,13 @@ export default function Home() {
 
 					<div className="right">
 						右側
+						{(cartItemsResponse == undefined) ?
+						<div></div>:
 					<mainContext.Provider value={{ cartItemsResponse, setCartItemsResponse }}>
 						<CartItemView />
 					</mainContext.Provider>
+
+						}
 					</div>
 				</div>
 			</main>
@@ -144,7 +148,7 @@ export default function Home() {
 				}
 				main{
 					flex-grow: 1;
-					background:pink;
+					background:white;
 				}
 				.leftCenterRightInMain{
 					display: flex;
@@ -154,7 +158,7 @@ export default function Home() {
 				.left{
 					flex:0.5;
 					color:rainbow;
-					background:pink;
+					background:white;
 					width:100px;
 				}
 				.center{
@@ -163,7 +167,7 @@ export default function Home() {
 				}
 				.right{
 					flex:1;
-					background:red;
+					background:white;
 				}
 
 				.PaginationPosition{
