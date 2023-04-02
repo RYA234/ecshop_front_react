@@ -1,15 +1,21 @@
 
 import { useContext, useState } from "react";
 import {mainContext } from '../../pages/index';
+import Router from 'next/router';
 // ショッピングカートの金額情報を表示するコンポーネント
 export default function CartMainItemV3(this :any) {	
 	
 	const {cartItemsResponse} : any= useContext(mainContext)
 	console.log("cartItemsResponse is" + cartItemsResponse)
+	
+	const onCheckoutClick = () =>{
+		Router.push('/checkout')
+	}
+
 	return (
 		<div className="Layout" key={cartItemsResponse}>		
 			<div className="Title">買い物カゴの中身</div>
-			<button className="PurchaseButton">決済へ</button>
+			<button className="PurchaseButton" onClick={onCheckoutClick}>決済へ</button>
 			<div className="MoneyInfomation">
 				<div>合計額:</div>
 				{/* cartItemsResponse.totalだとエラーになる「TypeError: Cannot read properties of undefined」 */}
