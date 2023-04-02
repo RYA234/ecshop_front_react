@@ -29,7 +29,7 @@ export default function Home() {
 
 	  // １ページあたりの商品数
 	  const pageSize : number = 10;
-
+	
 
 
 	  // 初回実行される関数
