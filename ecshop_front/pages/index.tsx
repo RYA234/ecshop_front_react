@@ -46,7 +46,7 @@ export default function Home() {
 	
 	// ローカルストレージのaccessTokenに値が存在する場合ログイン判定をする。
 	const getCustomerInformationFromJwtAccessKey = async () => {
-		if(localStorage.getItem('accessToken') != null || localStorage.getItem('accessToken') != 'AxiosError: Network Error'){
+		if(localStorage.getItem('accessToken') != null && localStorage.getItem('accessToken') != 'AxiosError: Network Error'){
 			let response = await CartItemService2.getCartItems2(
 				localStorage.getItem('accessToken') as string
 			).then((response) => {
