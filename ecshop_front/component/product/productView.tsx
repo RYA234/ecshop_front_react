@@ -48,7 +48,7 @@ export default function ProductView(){
 				productResponse?.content.map((product: Product,index:number)=>{
 					return(
 						<div className="Child" key={index}>
-								<ProductContentV2 productName={productResponse.content[index].name} priceWithoutTax={productResponse.content[index].price} priceIncludingTax={(productResponse.content[index].price * (1 + productResponse.content[index].taxRate)).toFixed() as string} imageURL={'/sampleProduct1.JPG'} id={productResponse.content[index].id}/>
+								<ProductContentV2 productName={productResponse.content[index].name} priceWithoutTax={productResponse.content[index].price} priceIncludingTax={(productResponse.content[index].price * (1 + productResponse.content[index].taxRate)).toFixed() as string} imageURL={productResponse.content[index].image} id={productResponse.content[index].id}/>
 						</div>
 					)			
 				})
