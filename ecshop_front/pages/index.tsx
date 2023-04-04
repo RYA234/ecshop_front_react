@@ -9,6 +9,7 @@ import * as productServiceV2 from '../service/productServiceV2';
 import ProductView from '../component/product/productView';
 import * as CartItemService2 from "../service/cartItemServiceV2";
 import CartItemView from '../component/cartItem/cartItemView';
+import Footer from '../component/footer/footer';
 
 // contextの作成
 export const mainContext  = createContext(0);
@@ -87,86 +88,86 @@ export default function Home() {
 	  };
 	console.log(process.env.TEST);
 	return (
-
 		<div className = 'headCenterFooter'>
-			<header>
-				
+			<header>	
 				<mainContext.Provider value={{isLogin,setIsLogin}}>
 				<Header/>
 				</mainContext.Provider>
 			</header>
-			<main>
-				<div className='leftCenterRightInMain'>
-					<div className="left">
-						左側
-						
-					<mainContext.Provider value={{ categoryResponse,setCategoryId}}>
-						<CategoryMenu/>
-					</mainContext.Provider>
-					</div>
-					<div className='center'>
-					<mainContext.Provider value={{ productResponse, setProductResponse,setCartItemsResponse,categoryId }}>
-						<ProductView />
-					</mainContext.Provider>
-					</div>
+		
+			<div className='leftCenterRightInMain'>
+				<div className="left">
+				<mainContext.Provider value={{ categoryResponse,setCategoryId}}>
+					<CategoryMenu/>
+				</mainContext.Provider>
+			</div>
+			<div className='center'>
+				<mainContext.Provider value={{ productResponse, setProductResponse,setCartItemsResponse,categoryId }}>
+					<ProductView />
+				</mainContext.Provider>
+			</div>
 
-					<div className="right">
-						右側
-						{(cartItemsResponse == undefined) ?
-						<div></div>:
+				<div className="right">
+					右側
+					{(cartItemsResponse == undefined) ? <div></div>
+					:
 					<mainContext.Provider value={{ cartItemsResponse, setCartItemsResponse }}>
 						<CartItemView />
 					</mainContext.Provider>
-
-						}
-					</div>
+					}
 				</div>
-			</main>
-			<footer>フッター</footer>
+			</div>
+
+			<footer><Footer/></footer>
+		
 			<style jsx>{`
 				.headCenterFooter{
 					display: flex;
-					flex-direction: column;				
+					flex-direction: column;		
+					margin: 0;
+					min-height: 100vh;							
 				}
 
 				header{
-					position:sticky;
-					top: 0;
-					left: 0;
+					// position:sticky;
+					// top: 0;
+					// left: 0;
 					width: 100%;
 					height: 120px;
 					color:black;
 					background:yellow;
 					z-index: 100;
 				}
-				footer{
-					color:yellow;
-					background:purple;
-					height:100px;
-					bottom:0;
-					width:100%;
+				Footer{
+					width: 1440px;
+					height: 178px;
+					left: calc(50% - 1440px/2);
+					// position: fixed;/*←絶対位置*/
+					// bottom: 0; /*下に固定*/
+					// margin-top: auto;
+					border: 1px solid #1BE1B2;
 				}
 				main{
-					flex-grow: 1;
+					flex: 1;
 					background:white;
 				}
 				.leftCenterRightInMain{
 					display: flex;
-					flex-direction: row;
-					
+					// flex-direction: row;
+					flex:1
 				}
 				.left{
-					flex:0.5;
+					// flex:0.5;
 					color:rainbow;
 					background:white;
-					width:100px;
+					width:160px;
 				}
 				.center{
 					flex:3;
 					background:white;
 				}
 				.right{
-					flex:1;
+					// flex:1;
 					background:white;
 				}
 
