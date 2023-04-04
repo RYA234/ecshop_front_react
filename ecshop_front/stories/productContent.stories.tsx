@@ -16,7 +16,5 @@ AAb.args = {
 	priceWithoutTax:200,
 	priceIncludingTax:'299',
 	// 画像ファイルたちはpublicフォルダにあることが前提
-	imageURL:"/sampleProduct1.jpg"
-	// imageURL:"/vercel.svg"
-	// imageURL:"/sample.png"
+	imageURL:"/sampleProduct1.JPG"
 };
