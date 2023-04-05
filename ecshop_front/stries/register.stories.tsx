@@ -1,16 +1,16 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import  ProductContent  from '../cartItem/cartMainItem';
+import  ProductContent  from '../component/cartItem/cartMainItem';
 import { jsxDecorator } from "@styled/storybook-addon-jsx";
-import CartMainItem from '../cartItem/cartMainItem';
+import CartMainItem from '../component/cartItem/cartMainItem';
+import Register from '../pages/register';
 
 export default{
-	title:'Example/cartMainItem',
-	component:CartMainItem,
-	argTypes: { onClick: { action: 'clicked' } },
-} as ComponentMeta<typeof CartMainItem>;
+	title:'Page/register',
+	component:Register,
+} as ComponentMeta<typeof Register>;
 
-const Template: ComponentStory<typeof CartMainItem> = (args) => <CartMainItem {...args} />;
+const Template: ComponentStory<typeof Register> = (args) => <Register{...args} />;
 
 export const normal = Template.bind({});
 normal.args = {

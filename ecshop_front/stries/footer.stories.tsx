@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Footer from "../footer/footer";
+import Footer from "../component/footer/footer";
 
 
 

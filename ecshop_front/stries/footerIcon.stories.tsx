@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import FooterIcon from "../footer/footerIcon";
+import FooterIcon from "../component/footer/footerIcon";
 
 export default{
     title:'example/LoginCard'

@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import LoginCard from "../welcome/loginCard";
+import LoginCard from "../component/welcome/loginCard";
 
 
 export default{
