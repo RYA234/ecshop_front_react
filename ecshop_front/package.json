@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build; build-storybook -c .storybook -o public/_storybook",
     "start": "next start",
     "lint": "next lint",
-    "storybookA": "start-storybook -p 6006",
+    "storybook": "start-storybook -c .storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest --watch",
     "test:ci": "jest --ci",
