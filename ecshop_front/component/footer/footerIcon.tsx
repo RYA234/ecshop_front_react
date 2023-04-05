@@ -11,7 +11,7 @@ export default function FooterIcon(){
 
             <div className='FrontEndTextStyle'>フロントエンド</div>
             <div className='FrontEndGithubIcon'>
-                <a href="https://github.com/RYA234/ecshop_front_react">
+                <a href="https://github.com/RYA234/ecshop_front_react" target="_blank" rel="noreferrer">
                     <Image src='/icons/GithubIcon.JPG'
                         width={16} 
                         height={16}
@@ -20,7 +20,7 @@ export default function FooterIcon(){
             </div>
 
             <div className='StoryBookIcon'>
-                <a href={storybookURL}>
+                <a href={storybookURL} target="_blank" rel="noreferrer" >
                     <Image src='/icons/StoryBookIcon.JPG'
                         width={16} 
                         height={16}
@@ -29,7 +29,7 @@ export default function FooterIcon(){
             </div>
             <div className='BackEndTextStyle'>バックエンド</div>
             <div className='BackEndGithubIcon'>
-                <a href="https://github.com/RYA234/springboot-ecshop-rest-api">
+                <a href="https://github.com/RYA234/springboot-ecshop-rest-api" target="_blank" rel="noreferrer">
                     <Image src='/icons/GithubIcon.JPG'
                         width={16} 
                         height={16}
@@ -38,7 +38,7 @@ export default function FooterIcon(){
             </div>
 
             <div className='SwaggerUIIcon'>
-                <a href="https://ecshoprest-backend.com/swagger-ui/">
+                <a href="https://ecshoprest-backend.com/swagger-ui/" target="_blank" rel="noreferrer">
                     <Image src='/icons/SwaggerUIIcon.JPG'
                         width={16} 
                         height={16}
@@ -48,7 +48,7 @@ export default function FooterIcon(){
 
             <div className='OtherTextStyle'>その他</div>
             <div className='QiitaIcon'>
-                <a href="https://qiita.com/RYA234/items/8dcb1ce01852ebb03afd">
+                <a href="https://qiita.com/RYA234/items/8dcb1ce01852ebb03afd" target="_blank" rel="noreferrer">
                     <Image src='/icons/QiitaIcon.JPG'
                         width={16} 
                         height={16}
