@@ -8,7 +8,6 @@ module.exports = {
   docs: {
     autodocs: true
   },
-  framework: './node_modules/@storybook/react',
   core: {
     builder: 'webpack5',
   },
