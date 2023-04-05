@@ -8,7 +8,5 @@ module.exports = {
   docs: {
     autodocs: true
   },
-  core: {
-    builder: 'webpack5',
-  },
+
 };
