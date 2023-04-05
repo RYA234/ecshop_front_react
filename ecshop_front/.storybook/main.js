@@ -9,7 +9,7 @@ module.exports = {
     "@storybook/addon-interactions"
   ],
   "framework": "@storybook/react",
-  "staticDirs": ["../public"],
+  "staticDirs": ["../stories"],
   "core": {
     "builder": "webpack4"
   },

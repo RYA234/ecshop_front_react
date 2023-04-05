@@ -7,11 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "storybook": "start-storybook -p 6006",
+    "storybookA": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "storybook:build": "build-storybook -s public",
+    "storybook-build": "build-storybook -s stories -o storybook-static -c .storybook",
     "serve-storybook": "serve storybook-static"
   },
   "dependencies": {
