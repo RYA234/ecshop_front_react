@@ -1,18 +1,22 @@
-module.exports = {
-  "stories": [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)"
-  ],
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions"
-  ],
-  "framework": "@storybook/react",
-  "staticDirs": ["../public"],
-  "core": {
-    "builder": "webpack4"
+import Image from 'next/image';
+
+
+export const parameters = {
+  actions: { argTypesRegex: "^on[A-Z].*" },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
   },
 
 
 }
+Image.propTypes = {
+	unoptimized: null,
+  };
+  
+  Image.defaultProps = {
+	unoptimized: true,
+  };
+  
