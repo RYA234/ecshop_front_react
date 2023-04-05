@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import  ProductContent  from '../component/product/productContent';
+import  ProductContent  from '../product/productContent';
 import { jsxDecorator } from "@styled/storybook-addon-jsx";
 
 export default{

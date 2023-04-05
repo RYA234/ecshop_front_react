@@ -4,15 +4,24 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build; build-storybook -c .storybook -o public/_storybook",
     "start": "next start",
     "lint": "next lint",
+<<<<<<< HEAD
     "test": "jest --watch",
     "test:ci": "jest --ci",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "serve-storybook": "serve storybook-static"
 
+=======
+    "storybook": "start-storybook -c .storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "test": "jest --watch",
+    "test:ci": "jest --ci",
+    "storybook-build": "build-storybook -s stories -o storybook-static -c .storybook",
+    "serve-storybook": "serve storybook-static"
+>>>>>>> 5eb562ec6a36dc4653f6f11c2c5cfc7c543ed824
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^1.9.0",

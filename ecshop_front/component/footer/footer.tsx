@@ -1,4 +1,4 @@
-import { footerContent } from '../../stories/footerIcon.stories';
+import { footerContent } from '../storybook/footerIcon.stories';
 import FooterContent from './footerContent';
 import FooterIcon from './footerIcon';
 export default function Footer() {

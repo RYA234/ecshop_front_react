@@ -1,9 +1,9 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import  ProductContent  from '../component/cartItem/cartMainItem';
+import  ProductContent  from '../cartItem/cartMainItem';
 import { jsxDecorator } from "@styled/storybook-addon-jsx";
-import CartMainItem from '../component/cartItem/cartMainItem';
-import Register from '../pages/register';
+import CartMainItem from '../cartItem/cartMainItem';
+import Register from '../../pages/register';
 
 export default{
 	title:'Page/register',
