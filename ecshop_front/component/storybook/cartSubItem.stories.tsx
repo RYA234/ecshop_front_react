@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import  ProductContent  from '../component/cartItem/cartMainItem';
+import  ProductContent  from '../cartItem/cartMainItem';
 import { jsxDecorator } from "@styled/storybook-addon-jsx";
-import CartSubItem from '../component/cartItem/cartSubItem';
+import CartSubItem from '../cartItem/cartSubItem';
 
 export default{
 	title:'Example/cartItemSub',

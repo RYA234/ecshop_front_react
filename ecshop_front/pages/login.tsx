@@ -61,9 +61,9 @@ export default function Login() {
 	return(
 	<>
 	<div>ユーザーログイン画面</div>
-	<div>Emailアドレス</div>	
+	<div>Emailアドレス:</div>	
 	<input type="text" onChange={onChangeEmailHandler}></input>		
-	<div>パスワード</div>
+	<div>パスワード:</div>
 	<input type="password" onChange={onChangePasswordHandler}></input>
 	<br/>
 	<button onClick={onLoginClick} >ログイン</button>
