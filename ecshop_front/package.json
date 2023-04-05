@@ -4,15 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build; build-storybook -c .storybook -o public/_storybook",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
     "test": "jest --watch",
-    "test:ci": "jest --ci",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
-    "serve-storybook": "serve storybook-static"
+    "test:ci": "jest --ci"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^1.9.0",
@@ -57,8 +55,6 @@
     "@types/testing-library__jest-dom": "5.14.5",
     "jest": "28.1.0",
     "jest-environment-jsdom": "28.1.0",
-    "@testing-library/react-hooks": "^7.0.2",
-    "@storybook/builder-webpack5": "^6.4.9",
-    "@storybook/manager-webpack5": "^6.4.9"
+    "@testing-library/react-hooks": "^7.0.2"
   }
 }
