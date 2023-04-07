@@ -1,9 +1,9 @@
 
 import { useContext, useState } from "react";
-import {mainContext } from '../../pages/index';
+import {mainContext } from '../../pages/mainPage';
 import Router from 'next/router';
 // ショッピングカートの金額情報を表示するコンポーネント
-export default function CartMainItemV3(this :any) {	
+export default function CartMainItemV3() {	
 	
 	const {cartItemsResponse} : any= useContext(mainContext)
 	console.log("cartItemsResponse is" + cartItemsResponse)

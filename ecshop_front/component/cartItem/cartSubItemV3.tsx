@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import {mainContext } from "../../pages/index";
+import {mainContext } from "../../pages/mainPage";
 import * as cartItemServiceV2 from "../../service/cartItemServiceV2";
 import { CartItemResponse } from "../../types/cartItem/cartItemResponse";
 

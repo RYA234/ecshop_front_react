@@ -1,6 +1,6 @@
 import { CartItemResponse } from '../../types/cartItem/cartItemResponse';
 import { useContext } from 'react';
-import { mainContext } from '../../pages/index';
+import { mainContext } from '../../pages/mainPage';
 import CartMainItemV3 from "./cartMainItemV3";
 import CartSubItemV3 from './cartSubItemV3';
 import { CartItemDto } from "../../types/cartItem/cartItemDto";

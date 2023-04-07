@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useContext, useState } from "react";
-import { mainContext } from '../pages/index';
+import { mainContext } from '../pages/mainPage';
 
 export default function Header() {
 	

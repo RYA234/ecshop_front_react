@@ -2,7 +2,7 @@ import test from "node:test";
 import { JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useContext, useEffect, useState } from "react";
 import { Category } from "../types/category/category";
 import { CategoryResponse } from '../types/category/categoryResponse';
-import { mainContext } from '../pages/index';
+import { mainContext } from '../pages/mainPage';
 
 // todo リファクタリング必要
 
