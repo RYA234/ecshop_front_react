@@ -1,6 +1,6 @@
 import { ProductResponse } from '../../types/product/productResponse';
 import { createContext, SetStateAction, useContext, useEffect, useState } from 'react';
-import { mainContext } from '../../pages/index';
+import { mainContext } from '../../pages/mainPage';
 import * as productServiceV2 from '../../service/productServiceV2';
 import { Product } from '../../types/product/product';
 import ProductContentV2 from './productContentV2';

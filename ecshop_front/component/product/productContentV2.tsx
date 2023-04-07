@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useContext, useState,useEffect } from 'react';
-import { mainContext } from '../../pages/index';
+import { mainContext } from '../../pages/mainPage';
 import * as CartItemService2 from "../../service/cartItemServiceV2";
 import { CartItemResponse } from '../../types/cartItem/cartItemResponse';
 import { ProductResponse } from '../../types/product/productResponse';
