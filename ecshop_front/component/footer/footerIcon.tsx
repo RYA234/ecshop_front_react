@@ -12,7 +12,7 @@ export default function FooterIcon(){
             <div className='FrontEndTextStyle'>フロントエンド</div>
             <div className='FrontEndGithubIcon'>
                 <a href="https://github.com/RYA234/ecshop_front_react" target="_blank" rel="noreferrer">
-                    <Image src='https://github.com/RYA234/ecshop_front_react/blob/main/ecshop_front/public/icons/GithubIcon.JPG'
+                    <Image src='/icons/GithubIcon.JPG'
                         width={16} 
                         height={16}
                         alt='logo' />
@@ -21,7 +21,7 @@ export default function FooterIcon(){
 
             <div className='StoryBookIcon'>
                 <a href={storybookURL} target="_blank" rel="noreferrer" >
-                    <Image src='.public/icons/StoryBookIcon.JPG'
+                    <Image src='/icons/StoryBookIcon.JPG'
                         width={16} 
                         height={16}
                         alt='logo' />
@@ -30,7 +30,7 @@ export default function FooterIcon(){
             <div className='BackEndTextStyle'>バックエンド</div>
             <div className='BackEndGithubIcon'>
                 <a href="https://github.com/RYA234/springboot-ecshop-rest-api" target="_blank" rel="noreferrer">
-                    <Image src='.public/icons/GithubIcon.JPG'
+                    <Image src='/icons/GithubIcon.JPG'
                         width={16} 
                         height={16}
                         alt='logo' />
@@ -39,7 +39,7 @@ export default function FooterIcon(){
 
             <div className='SwaggerUIIcon'>
                 <a href="https://ecshoprest-backend.com/swagger-ui/" target="_blank" rel="noreferrer">
-                    <Image src='.public/icons/SwaggerUIIcon.JPG'
+                    <Image src='/icons/SwaggerUIIcon.JPG'
                         width={16} 
                         height={16}
                         alt='logo' />
