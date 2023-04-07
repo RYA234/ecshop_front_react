@@ -63,6 +63,9 @@ import Router  from 'next/router';
 
                                 
 				}
+                .OkButton:hover{
+                    cursor: pointer;
+                }
                 .TitleText{
                     /* Content */
                     position: absolute;

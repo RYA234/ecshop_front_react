@@ -117,6 +117,9 @@ export default function LoginCard() {
           border: none;
           font-size: 15px;
         }
+        .LoginButton:hover {
+          cursor: pointer;
+        }
       `}</style>
     </div>
   );

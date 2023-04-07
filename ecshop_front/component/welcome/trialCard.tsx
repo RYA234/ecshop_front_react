@@ -64,6 +64,9 @@ import  Router  from 'next/router';
                     background: rgba(33, 181, 9, 0.63);
                     border-radius: 6px;                              
 				}
+                .OkButton:hover{
+                    cursor: pointer;
+                }
                 .TitleText{
                     /* Content */
                     position: absolute;

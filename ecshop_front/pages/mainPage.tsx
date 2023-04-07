@@ -25,7 +25,6 @@ export default function MainPage() {
 	  const[categoryId,setCategoryId] = useState<number>(1);	 
 	  const [pageNo,setPageNo] = useState<number>(1)
 	  const [isLogin,setIsLogin] = useState<boolean>(false)
-	
 	  // １ページあたりの商品数
 	  const pageSize : number = 10;
 	
@@ -63,7 +62,6 @@ export default function MainPage() {
     const getCategory = async () => {
 		const response = await CategoryService.getCategories();
 		await setCategoryResponse(response);
-		// console.log(response);
 	  }
 
    // 商品情報を取得する。
@@ -102,7 +100,6 @@ export default function MainPage() {
 			</div>
 
 				<div className="right">
-					右側
 					{(cartItemsResponse == undefined) ? <div></div>
 					:
 					<mainContext.Provider value={{ cartItemsResponse, setCartItemsResponse }}>
@@ -126,7 +123,6 @@ export default function MainPage() {
 					width: 100%;
 					height: 120px;
 					color:black;
-					background:yellow;
 					z-index: 100;
 				}
 				Footer{
@@ -149,7 +145,7 @@ export default function MainPage() {
 					width:160px;
 				}
 				.center{
-					flex:3;
+					flex:1;
 					background:white;
 				}
 				.right{
