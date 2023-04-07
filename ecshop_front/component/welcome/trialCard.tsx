@@ -5,7 +5,7 @@ import  Router  from 'next/router';
    export default function TrialCard(){
     const content : string =`
     ネットスーパーを見学します。\n
-    アカウントを登録無しで体験\n
+    アカウントを登録無しで体験
     できます。「店内見学」ボタ\n
     ンをクリックしてください\n
     `

@@ -13,20 +13,27 @@ export default function CartItemView(){
   console.log(+ cartItemsResponse)
 // 新しい商品を買い物カゴに追加する
   return (
-    <div>
+    <div >
       {/* MainItemsの実装 金額関係 */}
       {(cartItemsResponse == null) ? 
-    <div></div>:  <CartMainItemV3 />
+    <div></div>: 
+     <CartMainItemV3 />
     }
         {/* <CartMainItemV3 /> */}
       {/* SubItemsの実装 買い物カゴにいれた商品 */}
       {cartItemsResponse?.cartItemDtos.map((cartItemDtos:CartItemDto, index:number) => {
         return (
-			<>
+          <>
+          <div className="Child">
             	<CartSubItemV3 index={index} />  
-			</>
+          </div>
+          </>
 		);
       })}
+            <style jsx>{`
+       
+			`}</style>
+
     </div>
   );
 }    

@@ -59,14 +59,19 @@ export default function CartSubItemV3(props:{index:number}) {
   };
 
 
+
   return (
     <div className="Layout">
-      <div>{cartItemsResponse?.cartItemDtos[props.index].productName}</div>
-      <div>税抜{cartItemsResponse?.cartItemDtos[props.index].priceWithoutTax}円</div>
-      <div className="IncludingTax">
-        税込{cartItemsResponse?.cartItemDtos[props.index].priceWithTax.toFixed()}円
+      <div className="Title">
+        {cartItemsResponse?.cartItemDtos[props.index].productName}
       </div>
-      <div className="SubLayout">
+      <div className="WithoutTax">
+        税抜：{cartItemsResponse?.cartItemDtos[props.index].priceWithoutTax}円
+      </div>
+      <div className="IncludingTax">
+        税込：{cartItemsResponse?.cartItemDtos[props.index].priceWithTax.toFixed()}円
+      </div>
+      <div className="Selector">
         <select
           value={tempNum}
           onChange={(e: React.FormEvent<HTMLSelectElement>) =>
@@ -80,6 +85,7 @@ export default function CartSubItemV3(props:{index:number}) {
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
+      </div>
         <button
           className="ModifyButton"
           onClick={onQuantityChangeButtonHandler}
@@ -89,29 +95,109 @@ export default function CartSubItemV3(props:{index:number}) {
         <button className="DeleteButton" onClick={onDeleteButtonHandler}>
           削除
         </button>
-      </div>
+
       <style jsx>{`
         .Layout {
-          display: flex;
-          flex-direction: column;
-          width: 200px;
-          aligh-items: center;
-          border: 1px solid black;
+          box-sizing: border-box;
+          
+          position: relative;
+          width: 217px;
+          height: 107px;
+          // left: 0px;
+           top: 147px;
+          
+          background: #FFF5F5;
+          border: 1px solid #000000;
+          border-radius: 5px;
+          
         }
-        .SubLayout {
-          display: flex;
-          flex-direction: row;
-          column-gap: 10px;
+        .Selector{
+          box-sizing: border-box;
+
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          left: 50px;
+          top: 77px;          
+        }
+        .Title{
+
+          position: absolute;
+          width: auto;
+          height: 15px;
+          // left: 90px;
+          top: 12px;
+          text-align: center;
+
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 15px;
+          /* ボックスの高さと同一 */          
+          color: #000000;
+          
         }
         .IncludingTax {
-          color: red;
+          position: absolute;
+          width: 96px;
+          height: 15px;
+          left: 19px;
+          top: 61px;
+          
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 15px;
+          /* ボックスの高さと同一 */
+          
+          
+          color: #000000;
+        }
+        .WithoutTax {
+          position: absolute;
+          width: 96px;
+          height: 15px;
+          left: 19px;
+          top: 36px;
+          
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 15px;
+          /* ボックスの高さと同一 */
+          
+          
+          color: #000000;          
         }
         .ModifyButton {
-          background-color: green;
+          box-sizing: border-box;
+
+          position: absolute;
+          width: 51px;
+          height: 20px;
+          left: 90px;
+          top: 79px;
+          
+          background: #43D651;
+          border: 1px solid #000000;
+          border-radius: 3px;
           color: white;
         }
         .DeleteButton {
-          background-color: red;
+          box-sizing: border-box;
+
+          position: absolute;
+          width: 51px;
+          height: 20px;
+          left: 141px;
+          top: 79px;
+          
+          background: #FF8383;
+          border: 1px solid #000000;
+          border-radius: 3px;
           color: white;
         }
       `}</style>

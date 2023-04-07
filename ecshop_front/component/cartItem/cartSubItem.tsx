@@ -65,7 +65,17 @@ export default function cartSubItem({productName,priceWithoutTax,priceIncludingT
 					color:red;
 				}
 				.ModifyButton{
-					background-color: green;
+box-sizing: border-box;
+
+position: absolute;
+width: 51px;
+height: 20px;
+left: 90px;
+top: 79px;
+
+background: #43D651;
+border: 1px solid #000000;
+border-radius: 3px;
 					color:white;
 				}
 				.DeleteButton{

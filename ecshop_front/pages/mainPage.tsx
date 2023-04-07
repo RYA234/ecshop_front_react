@@ -154,6 +154,7 @@ export default function MainPage() {
 				}
 				.right{
 					background:white;
+					flex:1
 				}
 
 				.PaginationPosition{
