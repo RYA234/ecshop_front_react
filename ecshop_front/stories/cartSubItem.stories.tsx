@@ -2,22 +2,28 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import  ProductContent  from '../component/cartItem/cartMainItem';
 import { jsxDecorator } from "@styled/storybook-addon-jsx";
-import CartSubItem from '../component/cartItem/cartSubItem';
+import CartSubItemV3 from '../component/cartItem/cartSubItemV3';
+import { storiesOf } from "@storybook/react";
+import { mainContext } from "../pages/mainPage";
 
-export default{
-	title:'Example/cartItemSub',
-	component:CartSubItem,
-	argTypes: {onClick: { action: '数量変更ボタンが押されました。' } },
-} as ComponentMeta<typeof CartSubItem>;
+storiesOf("CartSubItemV3", module).add("default", () => {
+  const cartItemsResponse = {
+    cartItemDtos: [
+      {
+        productName: "Example Product",
+        priceWithoutTax: 100,
+        priceWithTax: 108,
+        quantity: 1,
+        productId: "12345"
+      }
+    ]
+  };
 
-const Template: ComponentStory<typeof CartSubItem> = (args) => <CartSubItem {...args} />;
+  const setCartItemsResponse = () => {};
 
-export const normal = Template.bind({});
-normal.args = {
-	productName:'aaasaasasasas',
-	priceWithoutTax:200,
-	priceIncludingTax:299,
-	amount:2
-	// imageURL:"/vercel.svg"
-	// imageURL:"/sample.png"
-};
+  return (
+    <mainContext.Provider value={{ cartItemsResponse, setCartItemsResponse }}>
+      <CartSubItemV3 index={0} />
+    </mainContext.Provider>
+  );
+});

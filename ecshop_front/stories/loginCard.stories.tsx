@@ -9,9 +9,9 @@ export default{
 
 const Template: ComponentStory<typeof LoginCard> = (args) => <LoginCard/>;
 
-export const footerContent = Template.bind({});
+export const loginContent = Template.bind({});
 
-footerContent.args = {
+loginContent.args = {
 
 }
 
