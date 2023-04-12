@@ -1,5 +1,5 @@
 import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { CartItemResponse } from "../types/cartItem/cartItemResponse";
 import { Customer } from "../types/customer";
 import * as CustomerService from "../service/customerService";
@@ -13,6 +13,8 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
+import CartItemTable from "../component/order/cartItemTable";
+import CartItemSum from "../component/order/cartItemSum";
 const stripePk : string | undefined = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY;
 // Stripeの公開キーを読み込む
 const stripePromise = loadStripe(
@@ -22,10 +24,11 @@ const stripePromise = loadStripe(
 // 決済画面検証用ページ
 // 買い物カゴのの中を表示して、Stripeクレジットカード決済するページです。
 // 決済完了後は自前のmySQLにデータを保存します。
+export const orderContext  = createContext(0);
 export default function Checkout() {
   ///↓↓↓買い物カゴ情報を取得する機能↓↓↓///
   // cartItemの情報をjsx上に表示するときに使う変数
-  const [cartItemsResponse, setCartItemsResponse] = useState<CartItemResponse>();
+  const [cartItemResponse, setCartItemResponse] = useState<CartItemResponse>();
 
   // clientSecretを格納する変数
   // クレカ入力欄を構築するためにStateにしている。
@@ -50,7 +53,6 @@ export default function Checkout() {
   const getCartItemAndCreatePaymentIntent = async () => {
     await getCartItem();
     await createPaymentIntent(tempTotal);
-
   }
 
   // ユーザーのカート情報を取得する loginAndGetCartitemで実行する。
@@ -58,7 +60,7 @@ export default function Checkout() {
     const response: CartItemResponse = await CartItemService2.getCartItems2(
       localStorage.getItem("accessToken") as unknown as string
     );
-    setCartItemsResponse(response);
+    setCartItemResponse(response);
     tempTotal = response.total.toFixed();
   };
   ///↑↑↑買い物カゴ情報を取得する機能↑↑↑///
@@ -77,44 +79,73 @@ export default function Checkout() {
   }
     return (
       <div>
-        <div>決済画面</div>
-        <div>買い物カゴ情報</div>
-        <div>クレジットカード情報</div>
-        <div>
-          {cartItemsResponse?.cartItemDtos.map((cartItem) => {
-            return (
-              <div key={cartItem.id} className="CartItemContent">
-                <div>商品名：{cartItem.productName}</div>
-                <div>価格：{cartItem.priceWithTax}</div>
-                <div>数量：{cartItem.quantity}</div>
-                <div>
-                  小計：{(cartItem.priceWithTax * cartItem.quantity).toFixed()}
-                  円
-                </div>
-              </div>
-            );
-          })}
-          <div>送料{cartItemsResponse?.shippingCost}円</div>
-          <div>お客様が支払う額:{cartItemsResponse?.total.toFixed()}円</div>
+        <div className="TitleText">決済画面</div>
+
+        <div className="CartItemContent">
+          <orderContext.Provider value={cartItemResponse}>
+              <CartItemTable/>
+          </orderContext.Provider>
         </div>
-        {/*↓↓　クレカ入力画面 ↓↓*/}
-        {options.clientSecret == "" ? (
-          <div></div>
-        ) : (
-          <div className="CardWidth">
-            <Elements stripe={stripePromise} options={options}>
-              <Payment />
-            </Elements>
+
+        <div className="Space">
+            <div className="Summary">
+              <orderContext.Provider value={cartItemResponse}>
+                  <CartItemSum/>
+              </orderContext.Provider >
+            </div>
+            {/*↓↓　クレカ入力画面 ↓↓*/}
+            {options.clientSecret == "" ? (
+              <div></div>
+            ) : (
+              <div className="CardWidth">
+                <Elements stripe={stripePromise} options={options}>
+                  <Payment />
+                </Elements>
+              </div>
+            )}
           </div>
-        )}
         <style jsx>{`
           // クレジットカード情報の入力欄の幅を調整するために作成
           .CartItemContent {
-            border: 1px solid black;
-            width: 300px;
+            width: 748px;
+            height: 100%;
+            left: 244px;
+            top: 10px;
+            position: relative;
+
           }
           .CardWidth {
-            width: 300px;
+            position: absolute;
+            width: 311px;
+            height: 357px;
+            left: 244px;
+            top: calc(50% - 357px/2 + 131.5px);
+          }
+          .Summary{
+            position: absolute;
+            width: 296px;
+            height: 187px;
+            left: 618px;
+            top:10px;
+          }
+          .TitleText{
+            position: relative;
+            width: 166px;
+            height: 45px;
+            left: 244px;
+            top: 17px;
+            
+            font-family: 'Impact';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 36px;
+            line-height: 44px;
+            
+            color: #000000;            
+          }
+          .Space{
+            position:relative;
+            top:100px;
           }
         `}</style>
       </div>
@@ -133,29 +164,31 @@ export default function Checkout() {
     const jwt: string | null = localStorage.getItem("accessToken");
 
     return (
-      <form
-        // 決済ボタンを押したときの処理
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (!stripe || !elements) return;
-          // Stripe側のAPIを実行し、支払い情報を完了する。
-          stripe
-            .confirmPayment({
-              elements,
-              confirmParams: {
-                return_url: process.env.NEXT_PUBLIC_FRONTEND_URL+"/checkoutDone",
-              },
-            })
-            
-            // SpringBoot側のAPIを実行し、自前のデータベースの情報を更新します。
-            //  todo 成功失敗問わずに実行するので、例外処理を加える必要がある
-            OrderService.completePayment(jwt as string);
-        }}
-      >
-        {/* クレカ情報の入力フォーム　Stripeのpublic_keyとPaymentIntentのclientSecretが必要 */}
-        <PaymentElement />
-        <button type="submit">Submit</button>
-      </form>
+      <div>
+        <form
+          // 決済ボタンを押したときの処理
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (!stripe || !elements) return;
+            // Stripe側のAPIを実行し、支払い情報を完了する。
+            stripe
+              .confirmPayment({
+                elements,
+                confirmParams: {
+                  return_url: process.env.NEXT_PUBLIC_FRONTEND_URL+"/checkoutDone",
+                },
+              })
+              
+              // SpringBoot側のAPIを実行し、自前のデータベースの情報を更新します。
+              //  todo 成功失敗問わずに実行するので、例外処理を加える必要がある
+              OrderService.completePayment(jwt as string);
+          }}
+        >
+          {/* クレカ情報の入力フォーム　Stripeのpublic_keyとPaymentIntentのclientSecretが必要 */}
+          <PaymentElement />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     );
   };
 

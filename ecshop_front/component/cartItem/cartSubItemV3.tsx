@@ -58,8 +58,6 @@ export default function CartSubItemV3(props:{index:number}) {
     );
   };
 
-
-
   return (
     <div className="Layout">
       <div className="Title">

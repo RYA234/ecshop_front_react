@@ -6,7 +6,7 @@ import { mainContext } from "../pages/mainPage";
 import CartMainItemV3 from '../component/cartItem/cartMainItemV3';
 
 storiesOf("CartMainItemV3", module).add("default", () => {
-  const cartItemsResponse = {
+  const cartItemResponse = {
     total: 1000,
     productCost: 800,
     shippingCost: 200,
@@ -14,7 +14,7 @@ storiesOf("CartMainItemV3", module).add("default", () => {
   };
 
   return (
-    <mainContext.Provider value={{ cartItemsResponse }}>
+    <mainContext.Provider value={{ cartItemResponse }}>
       <CartMainItemV3 />
     </mainContext.Provider>
   );

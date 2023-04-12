@@ -9,6 +9,7 @@ import Paper from "@material-ui/core/Paper";
 import {orderContext } from "../../pages/checkout";
 import { useContext } from "react";
 import { CartItemDto } from '../../types/cartItem/cartItemDto';
+import cartItemSubCheck from '../../pages/develop/cartItem/cartItemSubCheck';
 
 
 
@@ -40,50 +41,52 @@ const useStyles = makeStyles({
 
 export default function CartItemTable() {
   const classes = useStyles();
-  const { cartItemsResponse, setCartItemsResponse}: any = useContext(orderContext);
-  return (
-    <TableContainer component={Paper} style={{width: '700px'}}>
-      <Table className={classes.table} aria-label="simple table" >
-        <TableHead>
-          <TableRow>
-            <TableCell className={classes.productName}>商品名</TableCell>
-            <TableCell align="right" className={classes.price}>商品価格</TableCell>
-            <TableCell align="right" className={classes.quantity}>数量</TableCell>
-            <TableCell align="right" className={classes.total}>合計</TableCell>
-            <TableCell align="right" className={classes.taxRate}>税率</TableCell>
-            <TableCell align="right" className={classes.delete}>削除</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-       
-        
+  const cartItemResponse: any = useContext(orderContext);
 
-        {cartItemsResponse ? (
-  cartItemsResponse.CartItemDtos.map((item: CartItemDto) => (
-    <TableRow key={item.name}>
-      <TableCell
-        component="th"
-        scope="row"
-        className={classes.productName}
-      >
-        {item.name}
-      </TableCell>
-      <TableCell align="right">{item.price}</TableCell>
-      <TableCell align="right">{item.quantity}</TableCell>
-      <TableCell align="right">{item.total}</TableCell>
-      <TableCell align="right">{item.taxRate}</TableCell>
-      <TableCell align="center">
-        <button>☓</button>
-      </TableCell>
+
+
+  return (
+    <div>
+      <TableContainer component={Paper} style={{width: '700px'}}>
+        <Table className={classes.table} aria-label="simple table" >
+          <TableHead>
+            <TableRow>
+              <TableCell className={classes.productName}>商品名</TableCell>
+              <TableCell align="right" className={classes.price}>商品価格</TableCell>
+              <TableCell align="right" className={classes.quantity}>数量</TableCell>
+              <TableCell align="right" className={classes.total}>合計</TableCell>
+              <TableCell align="right" className={classes.taxRate}>税率</TableCell>
+              <TableCell align="right" className={classes.delete}>削除</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+          {cartItemResponse ? (
+    cartItemResponse.cartItemDtos.map((item: CartItemDto) => (
+      <TableRow key={cartItemSubCheck.name}>
+        <TableCell
+          component="th"
+          scope="row"
+          className={classes.productName}
+        >
+          {item.productName}
+        </TableCell>
+        <TableCell align="right">{item.price}</TableCell>
+        <TableCell align="right">{item.quantity}</TableCell>
+        <TableCell align="right">{item.total}</TableCell>
+        <TableCell align="right">{item.taxRate}</TableCell>
+        <TableCell align="center">
+          <button>☓</button>
+        </TableCell>
+      </TableRow>
+    ))
+  ) : (
+    <TableRow>
+      <TableCell colSpan={6}>カートに商品がありません。</TableCell>
     </TableRow>
-  ))
-) : (
-  <TableRow>
-    <TableCell colSpan={6}>カートに商品がありません。</TableCell>
-  </TableRow>
-)}
-        </TableBody>
-      </Table>
-    </TableContainer>
+  )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 }
