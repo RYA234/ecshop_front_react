@@ -104,30 +104,9 @@ import TrialCard from "../component/welcome/trialCard";
 					left: calc(50% - 1440px/2);
 					border: 1px solid #1BE1B2;
 				}
-				main{
-					flex: 1;
-					background:white;
-				}
 				.leftCenterRightInMain{
 					display: flex;
 					flex:1
-				}
-				.left{
-					color:rainbow;
-					background:white;
-					width:160px;
-				}
-				.center{
-					flex:3;
-					background:white;
-				}
-				.right{
-					background:white;
-				}
-
-				.PaginationPosition{
-					margin:auto;
-					width:50%
 				}
 			`}</style>
        </div> 
