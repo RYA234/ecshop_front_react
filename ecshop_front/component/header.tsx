@@ -59,11 +59,13 @@ export default function Header() {
 		</header>
 			<style jsx>{`
 			.LogoutIcon{
+				/* LogoutIcon */
 				position: absolute;
 				width: 42px;
 				height: 42px;
-				left: 1195px;
+				left: calc(50% - 42px/2 + 510px);
 				top: 27px;
+				
 				
 			}
 			.LogoutIcon:hover{
@@ -73,8 +75,9 @@ export default function Header() {
 				position: absolute;
 				width: 42px;
 				height: 42px;
-				left: 1275px;
-				top: 27px;				
+				left: calc(50% - 42px/2 + 591px);
+				top: 27px;
+				
 			}
 			.MyPageIcon:hover{
 				cursor:pointer;
@@ -84,7 +87,7 @@ export default function Header() {
 				position: absolute;
 				width: 60px;
 				height: 15px;
-				left: 1281px;
+				left: calc(50% - 60px/2 + 591px);
 				top: 78px;
 				
 				font-family: 'Inter';
@@ -102,7 +105,7 @@ export default function Header() {
 				position: absolute;
 				width: 60px;
 				height: 15px;
-				left: 1200px;
+				left: calc(50% - 60px/2 + 510px);
 				top: 78px;
 				
 				font-family: 'Inter';
@@ -113,7 +116,7 @@ export default function Header() {
 				/* ボックスの高さと同一 */
 				
 				
-				color: #000000;			
+				color: #000000;	
 			}
 			.HeaderImage{
 				position: absolute;
