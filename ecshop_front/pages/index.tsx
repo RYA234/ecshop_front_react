@@ -5,11 +5,11 @@ import TrialCard from "../component/welcome/trialCard";
 
  export default  function Index(){
     return(
-       <div className = 'headCenterFooter'>
+       <div className = 'HeadCenterFooter'>
          <header>
             ヘッダ
          </header>
-		 <div className='leftCenterRightInMain'>
+		 <div className='Main'>
 				<div className="TitleBack">
 					<div className="TitleText">ネットスーパーへようこそ</div>
 				</div>
@@ -85,29 +85,7 @@ import TrialCard from "../component/welcome/trialCard";
 					border: 1px solid #000000;
 					filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 				}
-				.headCenterFooter{
-					display: flex;
-					flex-direction: column;		
-					margin: 0;
-					min-height: 100vh;							
-				}
-				header{
-					width: 1440px;
-					height: 120px;
-					color:black;
-					background:yellow;
-					z-index: 100;
-				}
-				Footer{
-					width: 1440px;
-					height: 178px;
-					left: calc(50% - 1440px/2);
-					border: 1px solid #1BE1B2;
-				}
-				.leftCenterRightInMain{
-					display: flex;
-					flex:1
-				}
+
 			`}</style>
        </div> 
     )
