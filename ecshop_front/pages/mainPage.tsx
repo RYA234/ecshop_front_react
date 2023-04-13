@@ -80,14 +80,15 @@ export default function MainPage() {
 	  };
 	console.log(process.env.TEST);
 	return (
-		<div className = 'headCenterFooter'>
+		<div className = 'HeadCenterFooter'>
 			<header>	
 				<mainContext.Provider value={{isLogin,setIsLogin}}>
 				<Header/>
 				</mainContext.Provider>
 			</header>
 		
-			<div className='leftCenterRightInMain'>
+			<div className='Main'>
+				<div className="Flex">
 				<div className="left">
 				<mainContext.Provider value={{ categoryResponse,setCategoryId}}>
 					<CategoryMenu/>
@@ -107,38 +108,13 @@ export default function MainPage() {
 					</mainContext.Provider>
 					}
 				</div>
+				
+			</div>
 			</div>
 
 			<footer><Footer/></footer>
 		
 			<style jsx>{`
-				.headCenterFooter{
-					display: flex;
-					flex-direction: column;		
-					margin: 0;
-					min-height: 100vh;							
-				}
-
-				header{
-					width: 100%;
-					height: 120px;
-					color:black;
-					z-index: 100;
-				}
-				Footer{
-					width: 1440px;
-					height: 178px;
-					left: calc(50% - 1440px/2);
-					border: 1px solid #1BE1B2;
-				}
-				main{
-					flex: 1;
-					background:white;
-				}
-				.leftCenterRightInMain{
-					display: flex;
-					flex:1
-				}
 				.left{
 					color:rainbow;
 					background:white;
@@ -157,6 +133,10 @@ export default function MainPage() {
 					margin:auto;
 					width:50%
 				}
+				.Flex{
+					display: flex;
+				}
+
 			`}</style>
 		</div>
 	)
