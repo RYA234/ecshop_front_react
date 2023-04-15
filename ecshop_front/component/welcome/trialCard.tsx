@@ -21,8 +21,8 @@ import  Router  from 'next/router';
     }    
     return(
         <div className="LayoutSize">
-            <div >
-                    <Image className='ImageSize' src='/welcome/trial.JPG'
+            <div className='ImageSize' >
+                    <Image  src='/welcome/trial.JPG'
                       height={224}
                       width={193}
                       alt='logo' />
@@ -93,6 +93,53 @@ import  Router  from 'next/router';
                     font-size: 13px;
                     line-height: 16px;                    
                     color: #000000;                 
+                }
+
+                @media(max-width:640px){
+                    .LayoutSize{
+                        box-sizing: border-box;
+                        position: absolute;
+                        width: 310px;
+                        height: 120px;
+                        left: calc(50% - 310px/2);
+                        border: 1px solid #000000;
+                        border-radius: 4px;
+                    }
+                    .ImageSize{
+                        visibility: hidden;
+                    }
+                    .OkButton{
+                        position: absolute;
+                        width: 176px;
+                        height: 37px;
+                        left: calc(50% - 176px/2);
+                        top: 65px;
+                        color:White;
+                        background: rgba(33, 181, 9, 0.63);
+                        border-radius: 6px;                              
+                    }
+                    .OkButton:hover{
+                        cursor: pointer;
+                    }
+                    .TitleText{
+                        position: absolute;
+                        width: 167px;
+                        height: 35px;
+                        left: 72px;
+                        top: 25px;
+                        
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 20px;
+                        line-height: 24px;
+                        text-align: center;
+                        
+                        color: #000000;
+                    }
+                    .MainContent{
+                        visibility: hidden;                
+                    }                   
                 }
                 
 			`}</style>
