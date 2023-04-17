@@ -206,6 +206,25 @@ export default function ProductContentV2(props: Props) {
           left: 25px;
           top: 13px;
         }
+        
+        @media(max-width:640px){
+          .ProductName{
+            position: absolute;
+            width: 158px;
+            height: 30px;
+            left: 21px;
+            top: 163px;
+  
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 100;
+            font-size: 12px;
+            line-height: 15px;
+  
+            color: yellow; 
+          }
+
+        }
       `}</style>
     </>
   );

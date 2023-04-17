@@ -120,6 +120,100 @@ export default function LoginCard() {
         .LoginButton:hover {
           cursor: pointer;
         }
+        @media (max-width: 640px) {
+          .CardSize {
+            box-sizing: border-box;
+
+            position: absolute;
+            width: 310px;
+            height: 204px;
+
+            border: 1px solid #000000;
+            border-radius: 4px;
+          }
+          .Title {
+            position: absolute;
+            width: 251px;
+            height: 35px;
+            left: 42px;
+            top: 14px;
+
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+
+            color: #000000;
+          }
+          .EMailLabel {
+            position: absolute;
+            width: 70px;
+            height: 18px;
+            left: 38px;
+            top: 63px;
+
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 15px;
+
+            color: #000000;
+          }
+          .EMailInput {
+            box-sizing: border-box;
+
+            position: absolute;
+            width: 179px;
+            height: 20px;
+            left: 97px;
+            top: 59px;
+
+            background: #fffafa;
+          }
+          .PasswordLabel {
+            position: absolute;
+            width: 90px;
+            height: 18px;
+            left: 34px;
+            top: 99px;
+
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 15px;
+
+            color: #000000;
+          }
+          .PasswordInput {
+            box-sizing: border-box;
+
+            position: absolute;
+            width: 166px;
+            height: 20px;
+            left: 110px;
+            top: 97px;
+
+            background: #fffafa;
+          }
+          .LoginButton {
+            position: absolute;
+            width: 176px;
+            height: 37px;
+            left: calc(50% - 176px / 2);
+            top: 150px;
+            color: white;
+            background: rgba(0, 205, 218, 0.63);
+            border-radius: 6px;
+            border: none;
+            font-size: 15px;
+          }
+          .LoginButton:hover {
+            cursor: pointer;
+          }
+        }
       `}</style>
     </div>
   );

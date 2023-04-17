@@ -27,11 +27,10 @@ export default function App({ Component, pageProps }: AppProps) {
           width: 1440px;
           height: 178px;
           left: calc(50% - 1440px / 2);
-          border: 1px solid #1be1b2;;
-		  flex:1;
-		  position:relative;
-		  top:120px;
-
+          // border: 1px solid #1be1b2;
+          flex: 1;
+          position: relative;
+          top: 120px;
         }
         .Main {
           flex: 1;
@@ -41,6 +40,40 @@ export default function App({ Component, pageProps }: AppProps) {
           flex-direction: column;
           margin: 0;
           min-height: 100vh;
+        }
+        @media (max-width: 640px) {
+          // 共通レイアウト部分(Header Main Footer）
+          header {
+            position: relative;
+            height: 77px;
+            top: 0px;
+            left: 0px;
+            
+            background: red;
+            z-index: 100;
+            width:100%;
+
+            
+          }
+          footer {
+            position: relative;
+            height: 447px;
+            left: 80px;
+            right: 0px;
+            top: 200px;
+            width:40%;
+
+          }
+          .Main {
+            flex: 1;
+          }
+          .HeadCenterFooter {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            min-height: 100vh;
+            width:100%;
+          }
         }
       `}</style>
     </>
