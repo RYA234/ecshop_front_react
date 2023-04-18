@@ -121,8 +121,9 @@ export default function MainPage() {
 					width:160px;
 				}
 				.center{
-					flex:1;
+					// flex:1;
 					background:white;
+					width:800px;
 				}
 				.right{
 					background:white;
