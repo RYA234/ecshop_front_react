@@ -1,4 +1,5 @@
 import Footer from "../component/footer/footer";
+import Header from "../component/header";
 import LoginCard from "../component/welcome/loginCard";
 import RegisterCard from "../component/welcome/registerCard";
 import TrialCard from "../component/welcome/trialCard";
@@ -6,35 +7,40 @@ import TrialCard from "../component/welcome/trialCard";
 export default function Index() {
   return (
     <div className="HeadCenterFooter">
-      <header>ヘッダ</header>
+      <Header />
+      {/* <header>ヘッダ
+      </header> */}
       <div className="Main">
         <div className="TitleBack">
           <div className="TitleText">ネットスーパーへようこそ</div>
         </div>
-        <div className="CardBack"></div>
-        <div className="RegisterPosition">
-          <RegisterCard />
-        </div>
-        <div className="TrialPosition">
-          <TrialCard />
-        </div>
-        <div className="LoginPosition">
-          <LoginCard />
+        
+        <div className="ThreeContents">
+          <div className="RegisterPosition">
+            <RegisterCard />
+          </div>
+          <div className="TrialPosition">
+            <TrialCard />
+          </div>
+          <div className="LoginPosition">
+            <LoginCard />
+          </div>
         </div>
       </div>
-      <footer>
-        <Footer />
-      </footer>
+      {/* <footer> */}
+      <Footer />
+      {/* </footer> */}
 
       <style jsx>{`
         .TitleBack {
+          padding-left: 5%;
           position: absolute;
           width: 1208px;
           height: 44px;
-          left: 116px;
           top: 185px;
           background: #1be1b2;
           border-radius: 3px;
+          padding-left: 5%;
         }
         .TitleText {
           font-family: "Inter";
@@ -57,101 +63,62 @@ export default function Index() {
           background: #d9d9d9;
           border-radius: 8px;
         }
+        .Main {
+          display: flex;
+          padding-left: 5%;
+          padding-top: 150px;
+        }
         .RegisterPosition {
-          box-sizing: border-box;
-          position: absolute;
-          width: 392px;
-          height: 224px;
-          left: 125px;
-          top: 252px;
-          border: 1px solid #000000;
+          margin-left: 0px;
         }
         .TrialPosition {
-          box-sizing: border-box;
-          position: absolute;
-          width: 392px;
-          height: 224px;
-          left: 524px;
-          top: 252px;
-          border: 1px solid #000000;
+          margin-left: 394px;
         }
         .LoginPosition {
-          box-sizing: border-box;
-          position: absolute;
-          width: 392px;
-          height: 224px;
-          left: 923px;
-          top: 252px;
-          border: 1px solid #000000;
-          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          margin-left: 394px;
+        }
+        footer {
+          padding-left: 6%;
+        }
+        .ThreeContents{
+          display:flex;
+          flex-direction:row;
         }
         @media (max-width: 640px) {
           .TitleBack {
             position: absolute;
             height: 44px;
-            left: -7px;
             right: -7px;
             top: 155px;
-            width:100%;
+            width: 100%;
           }
           .TitleText {
-            position: absolute;
-            // width: 195px;
-            height: 18px;
-            // left: 18px;
-            top: 16px;
-            width:90%;
-
             font-family: "Inter";
             font-style: normal;
             font-weight: 700;
             font-size: 15px;
             line-height: 18px;
-
             color: #fffafa;
           }
-          .CardBack {
-            visibility: hidden;
-            width:0px;
-
-          }
           .RegisterPosition {
-            box-sizing: border-box;
-
-            position: absolute;
-            width: 310px;
-            height: 120px;
-            left: calc(50% - 310px / 2);
-            top: 224px;
-
-            border: 1px solid #000000;
-            border-radius: 4px;
+            margin-left:0%;      
+          }
+          .Main {
+            margin-left:0%;
           }
           .TrialPosition {
-            /* TrialMobileCard */
-
-            box-sizing: border-box;
-
-            position: absolute;
-            width: 310px;
-            height: 120px;
-            left: calc(50% - 310px / 2);
-            top: 344px;
-
-            border: 1px solid #000000;
-            border-radius: 4px;
+            margin-top: 130px;
+            margin-left: 0px;
+            padding-left: 5%;
           }
           .LoginPosition {
-            box-sizing: border-box;
-
-            position: absolute;
-            width: 310px;
-            height: 204px;
-            left: calc(50% - 310px / 2);
-            top: 464px;
-
-            border: 1px solid #000000;
-            border-radius: 4px;
+            margin-top: 130px;
+            margin-left:0%;
+          }
+          .ThreeContents{
+            display:flex;
+            flex-direction:column;
+            padding-left: 5%;
           }
         }
       `}</style>

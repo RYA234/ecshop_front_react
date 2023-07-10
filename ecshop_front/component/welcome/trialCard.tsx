@@ -101,7 +101,6 @@ import  Router  from 'next/router';
                         position: absolute;
                         width: 310px;
                         height: 120px;
-                        left: calc(50% - 310px/2);
                         border: 1px solid #000000;
                         border-radius: 4px;
                     }

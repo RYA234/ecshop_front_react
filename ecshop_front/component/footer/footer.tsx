@@ -22,76 +22,41 @@ export default function Footer() {
 
   return (
     <div className="Layout">
-      <div className="AboutThisSitePosition">
-        <FooterContent
-          title={aboutThisSiteTitle}
-          content={aboutThisSiteContent}
-        />
+      <div>
+        <FooterContent title={aboutThisSiteTitle} content={aboutThisSiteContent}/>
       </div>
       <div className="UsePosition">
         <FooterContent title={useTitle} content={useContent} />
       </div>
-
       <div className="IconPosition">
         <FooterIcon />
       </div>
-
       <style jsx>{`
         .Layout {
-          position: relative;
+          display:flex;
+          padding-left:5%;
         }
-
-        .AboutThisSitePosition {
-          position: absolute;
-          width: 361px;
-          height: 98px;
-          left: 143px;
-          top: 0px;
+        .AboutThisSitePosition {       
         }
         .UsePosition {
-          /* AboutThisSite */
-          position: absolute;
-          width: 361px;
-          height: 98px;
-          left: 530px;
-          top: 0px;
+          padding-left:10px;
         }
         .IconPosition {
-          position: absolute;
-          width: 161px;
-          height: 124px;
-          left: 960px;
-          top: 0px;
+          padding-left:10px;
         }
         @media (max-width: 640px) {
           .Layout {
             dispaly: flex;
             flex-direction: column;
+            padding-top:250px;
           }
-
           .AboutThisSitePosition {
-            position: absolute;
-            width: 50%;
-            height: 98px;
-            left: calc(50% - 361px / 2 + 15px);
-            top: 10px;
-            flex: 1;
           }
           .UsePosition {
-            position: absolute;
-            width: 50%;
-            height: 98px;
-            left: calc(50% - 361px / 2 + 15px);
-            top: 160px;
-            flex: 1;
-            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            margin-top:100px;
           }
           .IconPosition {
-            position: absolute;
-            width: 50%;
-            height: 225px;
-            left: calc(50% - 361px / 2 + 15px);
-            top: 330px;
+            margin-top:100px;
           }
         }
       `}</style>

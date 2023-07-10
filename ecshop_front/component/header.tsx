@@ -16,7 +16,7 @@ export default function Header() {
 
 	return (
 		<div>
-		<header>
+		<header className="sticky top-0">
 			<div className="HeaderImage">
 			<Image src='/icons/HeaderImage.JPG'
                         width={529} 
